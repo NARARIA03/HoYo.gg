@@ -17,3 +17,8 @@
 2. `getServerSideProps`와 `Tanstack-query` 간 hydration / dehydration 학습
 3. Test-driven-development(TDD) 방법론과 `Vitest`, `testing-library/react` 학습
 4. 코어 컴포넌트 (modal, dropdown, toast...)를 직접 구현하며 React 디자인패턴 학습
+
+### [ 사용 OpenAPI ]
+
+- Genshin game datas: https://gshimpact.vercel.app/
+- todo...
