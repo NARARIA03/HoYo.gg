@@ -11,7 +11,7 @@ const compat = new FlatCompat({
 });
 
 const typescriptTypeImportRule = {
-  files: ['**/*.ts', '**/*.tsx'],
+  files: ['**/*.ts', '**/*.tsx', '**/*.mjs', '**/*.mts'],
   rules: {
     '@typescript-eslint/consistent-type-imports': 'error',
   },
