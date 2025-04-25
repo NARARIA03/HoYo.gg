@@ -10,8 +10,16 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
+const typescriptTypeImportRule = {
+  files: ['**/*.ts', '**/*.tsx'],
+  rules: {
+    '@typescript-eslint/consistent-type-imports': 'error',
+  },
+};
+
 const eslintConfig = [
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  typescriptTypeImportRule,
   eslintConfigPrettier,
 ];
 
