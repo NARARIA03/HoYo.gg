@@ -1,1 +1,2 @@
+npm run type:ci
 npm run test:ci
