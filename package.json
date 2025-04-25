@@ -9,6 +9,7 @@
     "test": "vitest",
     "test:ci": "vitest run",
     "lint": "next lint",
+    "format": "prettier --check .",
     "typecheck": "tsc --noEmit",
     "check": "npm run lint && npm run typecheck"
   },
@@ -29,7 +30,9 @@
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9",
     "eslint-config-next": "15.2.5",
+    "eslint-config-prettier": "^10.1.2",
     "jsdom": "^26.0.0",
+    "prettier": "3.5.3",
     "typescript": "^5",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.1.1"
