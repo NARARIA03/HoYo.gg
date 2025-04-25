@@ -8,8 +8,8 @@
     "start": "next start",
     "test": "vitest",
     "test:ci": "vitest run",
-    "lint:ci": "next lint --fix",
-    "format:ci": "prettier --write .",
+    "lint:ci": "next lint",
+    "format:ci": "prettier --check .",
     "type:ci": "tsc --noEmit",
     "prepare": "husky"
   },
