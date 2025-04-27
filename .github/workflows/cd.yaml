@@ -22,8 +22,8 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           timeout: 40s
           script: |
-            cd ~/HoYo.gg 
-            git pull origin main 
-            npm ci 
-            npm run build 
+            cd ~/HoYo.gg
+            git pull origin main
+            npm ci
+            npm run build
             pm2 gracefulReload hoyogg
