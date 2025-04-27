@@ -7,7 +7,12 @@
     "build": "next build",
     "start": "next start",
     "test": "vitest",
-    "lint": "next lint"
+    "commitlint": "commitlint --edit",
+    "test:ci": "vitest run",
+    "lint:ci": "next lint",
+    "format:ci": "prettier --check .",
+    "type:ci": "tsc --noEmit",
+    "prepare": "husky"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -17,6 +22,8 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
     "@eslint/eslintrc": "^3",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.3.0",
@@ -26,7 +33,11 @@
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9",
     "eslint-config-next": "15.2.5",
+    "eslint-config-prettier": "^10.1.2",
+    "husky": "^9.1.7",
     "jsdom": "^26.0.0",
+    "lint-staged": "^15.5.1",
+    "prettier": "3.5.3",
     "typescript": "^5",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.1.1"

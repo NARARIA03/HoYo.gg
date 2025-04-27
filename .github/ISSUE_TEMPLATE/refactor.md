@@ -2,9 +2,8 @@
 name: Refactor
 about: 코드 리팩토링 시 해당 issue 템플릿을 사용해주세요.
 title: 'Refactor: '
-labels: ":recycle: refactor"
+labels: ':recycle: refactor'
 assignees: ''
-
 ---
 
 ## ♻️ Refactoring
@@ -15,10 +14,9 @@ assignees: ''
 
 ### 📅 예상 공수 일정
 
-> 해당 리팩토링 작업의 due date를 작성해주세요. 
-ex: (~29.06.20)
+> 해당 리팩토링 작업의 due date를 작성해주세요. ex: (~29.06.20)
 
-## 🌿  To-do
+## 🌿 To-do
 
 > 리팩토링을 위한 작업을 적절히 세분화해주세요.
 
