@@ -1,12 +1,7 @@
-import Link from 'next/link';
+import LandingScreen from '@/features/landing/screen/LandingScreen';
 
 const Home = () => {
-  return (
-    <div>
-      <h1>Home</h1>
-      <Link href="/about">About</Link>
-    </div>
-  );
+  return <LandingScreen />;
 };
 
 export default Home;
