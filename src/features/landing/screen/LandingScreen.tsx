@@ -8,7 +8,7 @@ const LandingScreen = () => {
       <GamePannel href="/genshin" imageUrl={IMAGES.genshinBg} alt="Genshin">
         Genshin Impact
       </GamePannel>
-      <GamePannel href="/hsr" imageUrl={IMAGES.hsrBg} alt="Honkai: Starrail">
+      <GamePannel href="/hsr" imageUrl={IMAGES.hsrBg} alt="Honkai: Star Rail">
         Honkai: Star Rail
       </GamePannel>
       <GamePannel href="/zzz" imageUrl={IMAGES.zzzBg} alt="Zenless Zone Zero">
