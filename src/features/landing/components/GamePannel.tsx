@@ -22,7 +22,7 @@ export const GamePannel = ({ href, imageUrl, alt, children }: Props) => {
         alt={alt}
         fill
         priority
-        sizes="33vw"
+        sizes="(max-width: 800px) 100vw, 33vw"
         css={{ transform: `translate(${offset.x}px, ${offset.y}px) scale(1.45)` }}
       />
       <SText>{children}</SText>
