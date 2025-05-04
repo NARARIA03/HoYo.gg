@@ -25,7 +25,7 @@ const SSection = styled.section`
   height: 100vh;
   display: flex;
 
-  @media screen and (max-width: 1250px) {
+  @media screen and (max-width: 800px) {
     flex-direction: column;
   }
 `;

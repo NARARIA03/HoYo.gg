@@ -1,13 +1,6 @@
 import { Global, css } from '@emotion/react';
 
 const styles = css`
-  @font-face {
-    font-family: 'Pretendard';
-    src: url('/fonts/PretendardVariable.woff2') format('woff2-variations');
-    font-weight: 45 920;
-    font-style: normal;
-    font-display: swap;
-  }
   *,
   *::before,
   *::after {
