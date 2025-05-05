@@ -1,4 +1,4 @@
-export const IMAGES = {
+export const IMAGES: Record<string, string> = {
   genshinBg: 'https://i.redd.it/66ic9c791ih61.png',
   hsrBg: 'https://i.redd.it/zf4z6utfezua1.png',
   zzzBg:
