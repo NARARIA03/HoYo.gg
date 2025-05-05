@@ -21,5 +21,4 @@
 
 ### [ 사용 OpenAPI ]
 
-- Genshin game datas: https://gshimpact.vercel.app/
-- hoyoverse-api: https://github.com/torikushiii/hoyoverse-api
+- Genshin db API: https://github.com/theBowja/genshin-db-api?tab=readme-ov-file

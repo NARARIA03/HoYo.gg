@@ -1,11 +1,12 @@
-import Link from 'next/link';
+import LandingScreen from '@/features/landing/screen/LandingScreen';
+import { NextSeo } from 'next-seo';
 
 const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
-      <Link href="/about">About</Link>
-    </div>
+    <>
+      <NextSeo title="HoYo.gg" description="호요버스 게임들의 데이터&진열장 검색 기능을 제공합니다." />
+      <LandingScreen />
+    </>
   );
 };
 
