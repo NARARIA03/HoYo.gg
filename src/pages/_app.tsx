@@ -1,7 +1,7 @@
 import GlobalStyle from '@/styles/GlobalStyle';
 import localFont from 'next/font/local';
 import type { AppProps } from 'next/app';
-import { DefaultSeo } from 'next-seo';
+import { DefaultSeoContainer } from '@/modules/seo';
 
 const pretendard = localFont({
   src: '../assets/fonts/PretendardVariable.woff2',
@@ -13,15 +13,7 @@ const pretendard = localFont({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <DefaultSeo
-        openGraph={{
-          type: 'website',
-          locale: 'ko_KR',
-          url: process.env.NEXT_PUBLIC_BASE_URL,
-          siteName: 'HoYo.gg',
-        }}
-        canonical={process.env.NEXT_PUBLIC_BASE_URL}
-      />
+      <DefaultSeoContainer />
       <main className={pretendard.className}>
         <GlobalStyle />
         <Component {...pageProps} />
