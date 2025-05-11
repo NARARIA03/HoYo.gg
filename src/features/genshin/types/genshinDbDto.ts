@@ -4,24 +4,81 @@ export type ItemDTO = {
   count: number; // 10개
 };
 
+/**
+ * 소속 단체 ENum
+ */
+export type AssociationTypeDTO =
+  | 'ASSOC_MAINACTOR'
+  | 'ASSOC_MONDSTADT'
+  | 'ASSOC_SUMERU'
+  | 'ASSOC_RANGER'
+  | 'ASSOC_INAZUMA'
+  | 'ASSOC_FATUI'
+  | 'ASSOC_LIYUE'
+  | 'ASSOC_FONTAINE'
+  | 'ASSOC_NATLAN';
+
+/**
+ * 캐릭터 모델링 ENum
+ */
+export type BodyTypeDTO = 'BODY_BOY' | 'BODY_MALE' | 'BODY_GIRL' | 'BODY_LADY' | 'BODY_LOLI';
+
+/**
+ * 캐릭터 원소 Text
+ */
+export type ElementTextDTO = '없음' | '바위' | '풀' | '얼음' | '불' | '물' | '번개' | '바람';
+
+/**
+ * 캐릭터 원소 ENum
+ */
+export type ElementTypeDTO =
+  | 'ELEMENT_NONE'
+  | 'ELEMENT_GEO'
+  | 'ELEMENT_DENDRO'
+  | 'ELEMENT_CRYO'
+  | 'ELEMENT_PYRO'
+  | 'ELEMENT_HYDRO'
+  | 'ELEMENT_ELECTRO'
+  | 'ELEMENT_ANEMO';
+
+/**
+ * 지역명 Text
+ */
+export type RegionDTO = '몬드' | '수메르' | '이나즈마' | '스네즈나야' | '리월' | '폰타인' | '나타';
+
+/**
+ * 무기 Text
+ */
+export type WeaponTextDTO = '한손검' | '활' | '양손검' | '장병기' | '법구';
+
+/**
+ * 무기 ENum
+ */
+export type WeaponTypeDTO =
+  | 'WEAPON_SWORD_ONE_HAND'
+  | 'WEAPON_BOW'
+  | 'WEAPON_CLAYMORE'
+  | 'WEAPON_POLE'
+  | 'WEAPON_CATALYST';
+
 export type FullGenshinCharacterDTO = {
   id: number;
   name: string; // 캐릭터 이름
   title: string; // 캐릭터 이명
   description: string; // 캐릭터 설명
-  weaponType: string; // 무기 타입, 추후 ENum화 필요
-  weaponText: string; // 무기 타입에 대한 텍스트 (한손검)
-  bodyType: string; // 이건 뭐지? body_boy, body_male, body_girl, body_lady -> 캐릭터 모델링 크기인듯, ENum화 필요
+  weaponType: WeaponTypeDTO;
+  weaponText: WeaponTextDTO;
+  bodyType: BodyTypeDTO;
   gender: '남성' | '여성';
-  qualityType: 'QUALITY_PURPLE' | 'QUALITY_ORANGE'; // 4성, 5성
+  qualityType: 'QUALITY_PURPLE' | 'QUALITY_ORANGE' | 'QUALITY_ORANGE_SP'; // 4성, 5성
   rarity: 4 | 5; // 4성, 5성
   birthdaymmdd: string; // 2/11 형식의 생일
   birthday: string; // 2월 11일 형식의 생일
-  elementType: string; // 사용 원소에 대한 내용, ENum화 필요
-  elementText: string; // 사용 원소에 대한 텍스트
+  elementType: ElementTypeDTO;
+  elementText: ElementTextDTO;
   affiliation: string; // 소속 단체 텍스트 (페보니우스 기사단, 우인단 등)
-  associationType: string; // 소속 단체 ENum
-  region: string; // 고향? 몬드 이나즈마 수메르 등
+  associationType: AssociationTypeDTO;
+  region: RegionDTO;
   substatType: string; // 레벨 올릴 때 들어가는 부스텟 ENum
   substatText: string; // 부스텟 텍스트
   constellation: string; // 별자리 텍스트
@@ -60,10 +117,10 @@ export type MinimizedGenshinCharacterDTO = {
   name: string;
   title: string;
   rarity: 4 | 5;
-  elementType: string;
-  elementText: string;
+  elementType: ElementTypeDTO;
+  elementText: ElementTextDTO;
   affiliation: string;
-  region: string;
+  region: RegionDTO;
   constellation: string;
   image: string;
 };

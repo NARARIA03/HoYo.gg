@@ -8,5 +8,5 @@ export const GenshinLandingScreen = () => {
     queryKey: [GENSHIN_CHARACTERS_QUERY_KEY],
   });
 
-  return data?.map((d) => <Image width={200} height={200} alt={d.name} key={d.id} src={d.image} />);
+  return data?.map((d) => <Image key={d.id} width={300} height={300} src={d.image} alt={d.title} />);
 };
