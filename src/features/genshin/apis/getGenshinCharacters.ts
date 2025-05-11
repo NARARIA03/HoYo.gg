@@ -10,8 +10,8 @@ export const getGenshinCharacters = {
     return res.data.map(_filterFn);
   },
   client: async () => {
-    const res = await axios.get<FullGenshinCharacterDTO[]>(endpoints.genshin.characters.client);
-    return res.data.map(_filterFn);
+    const res = await axios.get<MinimizedGenshinCharacterDTO[]>(endpoints.genshin.characters.client);
+    return res.data;
   },
 };
 
