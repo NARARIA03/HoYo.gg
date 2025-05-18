@@ -18,5 +18,9 @@ export const IMAGES = {
       스네즈나야:
         'https://i.namu.wiki/i/OFCgI1choYxBXfkMXOkiSzJQkMNQwdHvogeMcxdoL7sp4ltpKJ70jYVHuaSMJR078UsWgB3ulU-_gdj33yqp6pbEXrd-3W-ed4zzgnDozegsKmH9xynLrWF-tWnl084ptGV02CDOAYNw4NumcCdIiQ.webp',
     },
+    rarity: {
+      4: 'https://i.namu.wiki/i/NJhjPAjvk7xaS0vHcQ_5stwWn_qxRhycteX7CT5FBXsJK0wiOcdR3ZKg3u37IyP6yuII0YpNqyBLP7n9qmn6svQmS07OHdnQa-wPJNosPac1dvNHzILLf1YUzyopkNT-PL6Xyj4baWpthdsuXmXMQw.webp',
+      5: 'https://i.namu.wiki/i/KHFPTzDgsdL253_qUU1iUNRNRt7q24JTRkrYSrfzjh2frTTxoVYWHVBTcK-1PTY7zMmv-Nnds1UOxSSpTISEkaMnYm99WjQOzdQ_yGvrXmA8oceeM1-DcsvPRRL70SIBjXkRi5sH06mS_u-khJ5xSQ.webp',
+    },
   },
 } as const;
