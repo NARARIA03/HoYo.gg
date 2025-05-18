@@ -69,7 +69,6 @@ export type FullGenshinCharacterDTO = {
   weaponText: WeaponTextDTO;
   bodyType: BodyTypeDTO;
   gender: '남성' | '여성';
-  qualityType: 'QUALITY_PURPLE' | 'QUALITY_ORANGE' | 'QUALITY_ORANGE_SP'; // 4성, 5성
   rarity: 4 | 5; // 4성, 5성
   birthdaymmdd: string; // 2/11 형식의 생일
   birthday: string; // 2월 11일 형식의 생일
@@ -115,11 +114,9 @@ export type MinimizedGenshinCharacterDTO = {
   id: number;
   name: string;
   title: string;
+  description: string;
   rarity: 4 | 5;
-  elementType: ElementTypeDTO;
   elementText: ElementTextDTO;
-  affiliation: string;
   region: RegionDTO;
-  constellation: string;
   image: string;
 };
