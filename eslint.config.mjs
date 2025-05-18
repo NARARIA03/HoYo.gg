@@ -17,9 +17,17 @@ const typescriptTypeImportRule = {
   },
 };
 
+const noConsoleRule = {
+  files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+  rules: {
+    'no-console': 'error',
+  },
+};
+
 const eslintConfig = [
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
   typescriptTypeImportRule,
+  noConsoleRule,
   eslintConfigPrettier,
 ];
 
