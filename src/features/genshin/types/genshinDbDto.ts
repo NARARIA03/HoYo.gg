@@ -26,13 +26,12 @@ export type BodyTypeDTO = 'BODY_BOY' | 'BODY_MALE' | 'BODY_GIRL' | 'BODY_LADY' |
 /**
  * 캐릭터 원소 Text
  */
-export type ElementTextDTO = '없음' | '바위' | '풀' | '얼음' | '불' | '물' | '번개' | '바람';
+export type ElementTextDTO = '바위' | '풀' | '얼음' | '불' | '물' | '번개' | '바람';
 
 /**
  * 캐릭터 원소 ENum
  */
 export type ElementTypeDTO =
-  | 'ELEMENT_NONE'
   | 'ELEMENT_GEO'
   | 'ELEMENT_DENDRO'
   | 'ELEMENT_CRYO'
@@ -44,7 +43,7 @@ export type ElementTypeDTO =
 /**
  * 지역명 Text
  */
-export type RegionDTO = '몬드' | '수메르' | '이나즈마' | '스네즈나야' | '리월' | '폰타인' | '나타' | '';
+export type RegionDTO = '몬드' | '수메르' | '이나즈마' | '스네즈나야' | '리월' | '폰타인' | '나타';
 
 /**
  * 무기 Text

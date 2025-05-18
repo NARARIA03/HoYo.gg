@@ -7,7 +7,9 @@ export const GENSHIN_CHARACTERS_QUERY_KEY = 'genshinCharacters';
 export const getGenshinCharacters = {
   server: async () => {
     const res = await axios.get<FullGenshinCharacterDTO[]>(endpoints.genshin.characters.server);
-    return res.data.map(_filterFn);
+    return res.data
+      .map(_filterFn)
+      .filter((data) => data.id !== 10000005 && data.id !== 10000007 && data.id !== 10000062);
   },
   client: async () => {
     const res = await axios.get<MinimizedGenshinCharacterDTO[]>(endpoints.genshin.characters.client);
