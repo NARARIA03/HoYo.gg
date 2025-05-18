@@ -10,7 +10,7 @@ const meta = {
 
 export default meta;
 
-export const Rarity_5 = {
+export const Rarity_5_ellipsis = {
   args: {
     name: '에스코피에',
     title: '화려한 맛의 화음',
@@ -24,7 +24,7 @@ export const Rarity_5 = {
   },
 } satisfies StoryObj<typeof CharacterCard>;
 
-export const Rarity_4 = {
+export const Rarity_4_no_ellipsis = {
   args: {
     name: '콜레이',
     title: '다시 움튼 새싹',
