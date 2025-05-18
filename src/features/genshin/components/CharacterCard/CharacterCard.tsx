@@ -1,5 +1,6 @@
 import type { ElementTextDTO, RegionDTO } from '../../types/genshinDbDto';
 import * as S from './CharacterCard.styles';
+import { IMAGES } from '@/constants/images';
 
 type Props = {
   /** 이름 */
@@ -34,13 +35,15 @@ export const CharacterCard = ({
   image,
 }: Props) => {
   return (
-    <S.Wrapper $rarity={rarity} $elementText={elementText}>
+    <S.Wrapper $rarity={rarity}>
       <S.AvatarImage src={image} alt={name + 'image'} width={150} height={150} />
-      <p>{title}</p>
+      <p>
+        {name} · {title}
+      </p>
       <p>{rarity}</p>
       <p>{elementText}</p>
       <p>{affiliation}</p>
-      <p>{region}</p>
+      <S.EmblemImage src={IMAGES.genshin.emblem[region]} alt={region} width={36} height={36} />
       <p>{constellation}</p>
     </S.Wrapper>
   );
