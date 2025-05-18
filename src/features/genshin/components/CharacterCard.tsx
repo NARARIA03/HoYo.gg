@@ -70,9 +70,9 @@ const TextsBox = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
+  height: 103.49px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   backdrop-filter: blur(5px) brightness(50%);
   gap: 5px;
   padding: 5px;
