@@ -28,15 +28,15 @@ type Props = {
 export const CharacterCard = ({ name, title, description, rarity, elementText, region, image, onClick }: Props) => {
   return (
     <Wrapper onClick={onClick}>
-      <RarityImage src={IMAGES.genshin.rarity[rarity]} alt={`${rarity}등급 배경`} width={230} height={300} />
-      <AvatarImage src={image} alt={name} width={220} height={220} />
-      <ImageIcon src={IMAGES.genshin.emblem[region]} alt={region} width={36} height={36} css={{ top: 5, right: 5 }} />
+      <RarityImage src={IMAGES.genshin.rarity[rarity]} alt={`${rarity}등급 배경`} width={250} height={320} />
+      <AvatarImage src={image} alt={name} width={240} height={240} />
+      <ImageIcon src={IMAGES.genshin.emblem[region]} alt={region} width={35} height={35} css={{ top: 10, right: 10 }} />
       <ImageIcon
         src={IMAGES.genshin.element[elementText]}
         alt={`${elementText} 원소`}
-        width={36}
-        height={36}
-        css={{ top: 45, right: 5 }}
+        width={35}
+        height={35}
+        css={{ top: 50, right: 10 }}
       />
       <TextsBox>
         <NameTxt>
@@ -50,8 +50,8 @@ export const CharacterCard = ({ name, title, description, rarity, elementText, r
 
 const Wrapper = styled.section`
   position: relative;
-  width: 230px;
-  height: 300px;
+  width: 250px;
+  height: 320px;
   padding: 5px 0 0 0;
   border-radius: 10px;
   box-shadow:
@@ -70,12 +70,12 @@ const TextsBox = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 103.49px;
+  height: 105px;
   display: flex;
   flex-direction: column;
   backdrop-filter: blur(5px) brightness(50%);
   gap: 5px;
-  padding: 5px;
+  padding: 10px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   color: rgba(255, 255, 255, 0.8);
@@ -107,13 +107,13 @@ const ImageIcon = styled(Image)`
 `;
 
 const NameTxt = styled.h3`
-  font-weight: 700;
-  font-size: 17px;
+  font-weight: 800;
+  font-size: 15px;
 `;
 
 const DescriptionTxt = styled.p`
-  font-weight: 400;
-  font-size: 14px;
+  font-weight: 500;
+  font-size: 12px;
   text-overflow: ellipsis;
   overflow: hidden;
   word-break: break-word;
