@@ -12,14 +12,14 @@ export default meta;
 
 export const Rarity_5_ellipsis = {
   args: {
-    name: '에스코피에',
-    title: '화려한 맛의 화음',
+    name: '유메미즈키 미즈키',
+    title: '아름답게 얽힌 꿈',
     description:
-      '폰타인에서 명성이 자자한 드보르 호텔 전 주방장. 「디저트 대령」이라는 칭호를 가진 「과학 요리」의 선구자로, 요리에 대한 기준이 매우 엄격하다',
+      '「아이사 대중탕」의 대주주 겸 바쿠 일족의 심리 치료사. 악몽을 몰아내고 사람들의 마음에 평화를 가져다 주기 위해 열심히 노력하고 있다',
     rarity: 5,
-    elementText: '얼음',
-    region: '폰타인',
-    image: 'https://enka.network/ui/UI_AvatarIcon_Escoffier.png',
+    elementText: '바람',
+    region: '이나즈마',
+    image: 'https://enka.network/ui/UI_AvatarIcon_Mizuki.png',
     onClick: fn(),
   },
 } satisfies StoryObj<typeof CharacterCard>;
