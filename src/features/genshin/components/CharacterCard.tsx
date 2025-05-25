@@ -2,6 +2,8 @@ import { IMAGES } from '@/constants/images';
 import type { ElementTextDTO, RegionDTO } from '../types/genshinDbDto';
 import styled from '@emotion/styled';
 import Image from 'next/image';
+import { useRef } from 'react';
+import { useTiltGlareEffect } from '@/hooks/useTiltGlareEffect';
 
 type Props = {
   /** 이름 */
@@ -26,29 +28,48 @@ type Props = {
  * 캐릭터별 카드를 렌더링하는 컴포넌트입니다.
  */
 export const CharacterCard = ({ name, title, description, rarity, elementText, region, image, onClick }: Props) => {
+  const wrapperRef = useRef(null);
+  const cardRef = useRef(null);
+
+  useTiltGlareEffect({ parentRef: wrapperRef, childRef: cardRef });
+
   return (
-    <Wrapper onClick={onClick}>
-      <RarityImage src={IMAGES.genshin.rarity[rarity]} alt={`${rarity}등급 배경`} width={250} height={320} />
-      <AvatarImage src={image} alt={name} width={240} height={240} />
-      <ImageIcon src={IMAGES.genshin.emblem[region]} alt={region} width={35} height={35} css={{ top: 10, right: 10 }} />
-      <ImageIcon
-        src={IMAGES.genshin.element[elementText]}
-        alt={`${elementText} 원소`}
-        width={35}
-        height={35}
-        css={{ top: 50, right: 10 }}
-      />
-      <TextsBox>
-        <NameTxt>
-          {title} · {name}
-        </NameTxt>
-        <DescriptionTxt>{description}</DescriptionTxt>
-      </TextsBox>
-    </Wrapper>
+    <TiltBox ref={wrapperRef}>
+      <Wrapper onClick={onClick}>
+        <RarityImage src={IMAGES.genshin.rarity[rarity]} alt={`${rarity}등급 배경`} width={250} height={320} />
+        <AvatarImage src={image} alt={name} width={240} height={240} />
+        <ImageIcon
+          src={IMAGES.genshin.emblem[region]}
+          alt={region}
+          width={35}
+          height={35}
+          css={{ top: 10, right: 10 }}
+        />
+        <ImageIcon
+          src={IMAGES.genshin.element[elementText]}
+          alt={`${elementText} 원소`}
+          width={35}
+          height={35}
+          css={{ top: 50, right: 10 }}
+        />
+        <TextsBox>
+          <NameTxt>
+            {title} · {name}
+          </NameTxt>
+          <DescriptionTxt>{description}</DescriptionTxt>
+        </TextsBox>
+      </Wrapper>
+    </TiltBox>
   );
 };
 
-const Wrapper = styled.section`
+const TiltBox = styled.section`
+  width: fit-content;
+  height: fit-content;
+  padding: 15px;
+`;
+
+const Wrapper = styled.div`
   position: relative;
   width: 250px;
   height: 320px;
@@ -59,6 +80,8 @@ const Wrapper = styled.section`
     0 8px 20px rgba(0, 0, 0, 0.15);
   user-select: none;
   cursor: pointer;
+  transition: transform 0.1s ease;
+  transform-style: preserve-3d;
 
   & > * {
     position: relative;
