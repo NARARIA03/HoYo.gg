@@ -38,7 +38,7 @@ export const CharacterCard = ({ name, title, description, rarity, elementText, r
 
   return (
     <TiltBox ref={wrapperRef}>
-      <Wrapper onClick={onClick}>
+      <Wrapper ref={cardRef} onClick={onClick}>
         <GlareOverlay ref={overlayRef} />
         <RarityImage src={IMAGES.genshin.rarity[rarity]} alt={`${rarity}등급 배경`} width={250} height={320} />
         <AvatarImage src={image} alt={name} width={240} height={240} />
