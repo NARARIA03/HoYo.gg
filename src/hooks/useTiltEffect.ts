@@ -5,7 +5,7 @@ type HookProps = {
   childRef: RefObject<HTMLElement | null>;
 };
 
-export const useTiltGlareEffect = ({ parentRef, childRef }: HookProps) => {
+export const useTiltEffect = ({ parentRef, childRef }: HookProps) => {
   useEffect(() => {
     const parentEl = parentRef.current;
     const childEl = childRef.current;
@@ -17,8 +17,8 @@ export const useTiltGlareEffect = ({ parentRef, childRef }: HookProps) => {
       const centerY = top + height / 2;
       const offsetX = e.clientX - centerX;
       const offsetY = e.clientY - centerY;
-      const rotateX = (-offsetY / (height / 2)) * 25;
-      const rotateY = (offsetX / (width / 2)) * 25;
+      const rotateX = (-offsetY / (height / 2)) * 15;
+      const rotateY = (offsetX / (width / 2)) * 15;
       childEl.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     };
 
