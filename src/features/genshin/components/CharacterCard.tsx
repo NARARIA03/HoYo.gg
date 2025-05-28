@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import { useRef } from 'react';
 import { useTiltEffect } from '../hooks/useTiltEffect';
-import { useGlareEffect } from '../hooks/useGlareEffect';
+import { Glare, Hologram } from '@/components';
 
 type Props = {
   /** 이름 */
@@ -31,15 +31,14 @@ type Props = {
 export const CharacterCard = ({ name, title, description, rarity, elementText, region, image, onClick }: Props) => {
   const wrapperRef = useRef(null);
   const cardRef = useRef(null);
-  const overlayRef = useRef(null);
 
   useTiltEffect({ parentRef: wrapperRef, childRef: cardRef });
-  useGlareEffect({ parentRef: wrapperRef, overlayRef: overlayRef });
 
   return (
     <TiltBox ref={wrapperRef}>
       <Wrapper ref={cardRef} onClick={onClick}>
-        <GlareOverlay ref={overlayRef} />
+        <Hologram parentRef={wrapperRef} css={{ zIndex: 3 }} />
+        <Glare parentRef={wrapperRef} css={{ zIndex: 3 }} />
         <RarityImage src={IMAGES.genshin.rarity[rarity]} alt={`${rarity}등급 배경`} width={250} height={320} />
         <AvatarImage src={image} alt={name} width={240} height={240} />
         <ImageIcon
@@ -92,17 +91,6 @@ const Wrapper = styled.div`
     position: relative;
     z-index: 1;
   }
-`;
-
-const GlareOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  border-radius: 10px;
-  pointer-events: none;
 `;
 
 const TextsBox = styled.div`
