@@ -1,10 +1,10 @@
-import { IMAGES } from '@/constants/images';
-import type { ElementTextDTO, RegionDTO } from '../types/genshinDbDto';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import { useRef } from 'react';
-import { useTiltEffect } from '../hooks/useTiltEffect';
+import { IMAGES } from '@/constants/images';
 import { Glare, Hologram } from '@/components';
+import { useTiltEffect } from '../../hooks/useTiltEffect';
+import type { ElementTextDTO, RegionDTO } from '../../types/genshinDbDto';
 
 type Props = {
   /** 이름 */
