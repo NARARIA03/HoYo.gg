@@ -103,16 +103,6 @@ const GlareOverlay = styled.div`
   z-index: 2;
   border-radius: 10px;
   pointer-events: none;
-
-  filter: blur(60px);
-  background: radial-gradient(
-    circle 200px at var(--x) var(--y),
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 255, 255, 0.2) 40%,
-    rgba(255, 255, 255, 0.05) 70%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transition: background 0.1s;
 `;
 
 const TextsBox = styled.div`

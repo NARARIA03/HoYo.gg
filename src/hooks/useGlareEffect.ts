@@ -15,9 +15,15 @@ export const useGlareEffect = ({ parentRef, overlayRef }: HookProps) => {
       const { left, top, width, height } = parentEl.getBoundingClientRect();
       const x = ((e.clientX - left) / width) * 100;
       const y = ((e.clientY - top) / height) * 100;
-      overlayEl.style.display = 'block';
-      overlayEl.style.setProperty('--x', `${x}%`);
-      overlayEl.style.setProperty('--y', `${y}%`);
+      overlayEl.style.filter = 'blur(60px)';
+      overlayEl.style.background = `
+      radial-gradient(
+        circle 200px at ${x}% ${y}%,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(255, 255, 255, 0.2) 40%,
+        rgba(255, 255, 255, 0.05) 70%,
+        rgba(255, 255, 255, 0) 100%)`;
+      overlayEl.style.transition = 'background 0.1s';
     };
 
     const onMouseLeave = () => {
