@@ -3,8 +3,8 @@ import type { ElementTextDTO, RegionDTO } from '../types/genshinDbDto';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import { useRef } from 'react';
-import { useTiltEffect } from '@/hooks/useTiltEffect';
-import { useGlareEffect } from '@/hooks/useGlareEffect';
+import { useTiltEffect } from '../hooks/useTiltEffect';
+import { useGlareEffect } from '../hooks/useGlareEffect';
 
 type Props = {
   /** 이름 */
