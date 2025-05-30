@@ -44,22 +44,20 @@ export const Hologram = ({ parentRef, ...props }: HologramProps) => {
 };
 
 const Wrapper = styled.div`
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
+  border-radius: inherit;
   overflow: hidden;
-  background: linear-gradient(
-    110deg,
-    transparent 40%,
-    rgba(125, 228, 21, 0.8) 45%,
-    rgba(229, 236, 20, 0.6) 50%,
-    transparent 54%
-  );
-  filter: brightness(1) opacity(0.5);
-  mix-blend-mode: screen;
+  background:
+    linear-gradient(110deg, transparent 35%, rgba(125, 228, 21, 0.7) 42%, rgba(229, 236, 20, 0.5) 50%, transparent 58%),
+    linear-gradient(150deg, rgba(50, 200, 255, 0.15), rgba(255, 100, 200, 0.15));
+  filter: brightness(1.1) contrast(2) saturate(1.8) hue-rotate(20deg);
+  mix-blend-mode: soft-light;
   background-size: 200% 200%;
   background-position: 100%;
   transition: background-position 0.1s;
