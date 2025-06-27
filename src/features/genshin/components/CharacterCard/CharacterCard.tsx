@@ -1,7 +1,10 @@
-import { IMAGES } from '@/constants/images';
-import type { ElementTextDTO, RegionDTO } from '../types/genshinDbDto';
 import styled from '@emotion/styled';
 import Image from 'next/image';
+import { useRef } from 'react';
+import { IMAGES } from '@/constants/images';
+import { Glare, Hologram } from '@/components';
+import { useTiltEffect } from '../../hooks/useTiltEffect';
+import type { ElementTextDTO, RegionDTO } from '../../types/genshinDbDto';
 
 type Props = {
   /** 이름 */
@@ -26,39 +29,63 @@ type Props = {
  * 캐릭터별 카드를 렌더링하는 컴포넌트입니다.
  */
 export const CharacterCard = ({ name, title, description, rarity, elementText, region, image, onClick }: Props) => {
+  const wrapperRef = useRef(null);
+  const cardRef = useRef(null);
+
+  useTiltEffect({ parentRef: wrapperRef, childRef: cardRef });
+
   return (
-    <Wrapper onClick={onClick}>
-      <RarityImage src={IMAGES.genshin.rarity[rarity]} alt={`${rarity}등급 배경`} width={250} height={320} />
-      <AvatarImage src={image} alt={name} width={240} height={240} />
-      <ImageIcon src={IMAGES.genshin.emblem[region]} alt={region} width={35} height={35} css={{ top: 10, right: 10 }} />
-      <ImageIcon
-        src={IMAGES.genshin.element[elementText]}
-        alt={`${elementText} 원소`}
-        width={35}
-        height={35}
-        css={{ top: 50, right: 10 }}
-      />
-      <TextsBox>
-        <NameTxt>
-          {title} · {name}
-        </NameTxt>
-        <DescriptionTxt>{description}</DescriptionTxt>
-      </TextsBox>
-    </Wrapper>
+    <TiltBox ref={wrapperRef}>
+      <Wrapper ref={cardRef} onClick={onClick}>
+        <Hologram parentRef={wrapperRef} css={{ zIndex: 3 }} />
+        <Glare parentRef={wrapperRef} css={{ zIndex: 3 }} />
+        <RarityImage src={IMAGES.genshin.rarity[rarity]} alt={`${rarity}등급 배경`} width={250} height={320} />
+        <AvatarImage src={image} alt={name} width={240} height={240} />
+        <ImageIcon
+          src={IMAGES.genshin.emblem[region]}
+          alt={region}
+          width={35}
+          height={35}
+          css={{ top: 10, right: 10 }}
+        />
+        <ImageIcon
+          src={IMAGES.genshin.element[elementText]}
+          alt={`${elementText} 원소`}
+          width={35}
+          height={35}
+          css={{ top: 50, right: 10 }}
+        />
+        <TextsBox>
+          <NameTxt>
+            {title} · {name}
+          </NameTxt>
+          <DescriptionTxt>{description}</DescriptionTxt>
+        </TextsBox>
+      </Wrapper>
+    </TiltBox>
   );
 };
 
-const Wrapper = styled.section`
+const TiltBox = styled.section`
+  width: fit-content;
+  height: fit-content;
+  padding: 15px;
+`;
+
+const Wrapper = styled.div`
   position: relative;
   width: 250px;
   height: 320px;
   padding: 5px 0 0 0;
   border-radius: 10px;
   box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.1),
-    0 8px 20px rgba(0, 0, 0, 0.15);
+    0 8px 12px rgba(0, 0, 0, 0.2),
+    0 12px 32px rgba(0, 0, 0, 0.25),
+    0 16px 48px rgba(0, 0, 0, 0.3);
   user-select: none;
   cursor: pointer;
+  transition: transform 0.1s ease;
+  transform-style: preserve-3d;
 
   & > * {
     position: relative;

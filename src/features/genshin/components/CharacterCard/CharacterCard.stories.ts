@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-import { CharacterCard } from '../components/CharacterCard';
+import { CharacterCard } from './CharacterCard';
 
 const meta = {
   title: 'Components/Genshin/CharacterCard',
