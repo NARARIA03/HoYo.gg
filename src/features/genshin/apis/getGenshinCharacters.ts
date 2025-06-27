@@ -18,7 +18,8 @@ export const getGenshinCharacters = {
 };
 
 const _filterFn = (data: FullGenshinCharacterDTO): MinimizedGenshinCharacterDTO => {
-  const { id, name, title, description, rarity, elementText, region, images } = data;
+  const { id, name, title, description, rarity, elementText, region = '', images } = data;
+
   return {
     id,
     name,
