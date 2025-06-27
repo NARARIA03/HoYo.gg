@@ -5,13 +5,13 @@ import { IMAGES } from '@/constants/images';
 const LandingScreen = () => {
   return (
     <SSection>
-      <GamePannel href="/genshin" imageUrl={IMAGES.genshinBg} alt="Genshin">
+      <GamePannel href="/genshin" imageUrl={IMAGES.landing.genshin} alt="Genshin">
         Genshin Impact
       </GamePannel>
-      <GamePannel href="/hsr" imageUrl={IMAGES.hsrBg} alt="Honkai: Star Rail">
+      <GamePannel href="/hsr" imageUrl={IMAGES.landing.hsr} alt="Honkai: Star Rail">
         Honkai: Star Rail
       </GamePannel>
-      <GamePannel href="/zzz" imageUrl={IMAGES.zzzBg} alt="Zenless Zone Zero">
+      <GamePannel href="/zzz" imageUrl={IMAGES.landing.zzz} alt="Zenless Zone Zero">
         Zenless Zone Zero
       </GamePannel>
     </SSection>
