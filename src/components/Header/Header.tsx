@@ -1,4 +1,5 @@
 import { IMAGES } from '@/constants/images';
+import { Z_INDEX } from '@/styles/theme';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -48,6 +49,7 @@ const HeaderWrapper = styled.header`
   padding: 0 10px;
   overflow: hidden;
   background-color: #1e1e2f;
+  z-index: ${Z_INDEX.header};
 `;
 
 const LogoWrapper = styled.ul`
