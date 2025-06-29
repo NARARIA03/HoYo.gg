@@ -42,7 +42,7 @@ export const CharacterCard = ({ name, title, description, rarity, elementText, r
         <RarityImage src={IMAGES.genshin.rarity[rarity]} alt={`${rarity}등급 배경`} width={250} height={320} />
         <AvatarImage src={image} alt={name} width={240} height={240} />
         <ImageIcon
-          src={IMAGES.genshin.emblem[region]}
+          src={region && IMAGES.genshin.emblem[region]}
           alt={region}
           width={35}
           height={35}
