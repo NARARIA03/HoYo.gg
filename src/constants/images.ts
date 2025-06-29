@@ -4,6 +4,12 @@ const landing = {
   zzz: 'https://i.redd.it/zenless-zone-zero-cbt2-images-v0-r3kvi8vt7cyb1.jpg?width=1080&crop=smart&auto=webp&s=93fb6ac323f6e407e60a7913820820e8977857aa',
 } as const;
 
+const logo = {
+  genshin: '/images/logos/Genshin.webp',
+  hsr: '/images/logos/HSR.webp',
+  zzz: '/images/logos/ZZZ.webp',
+} as const;
+
 const genshin = {
   emblem: {
     몬드: '/images/genshin/emblem/Mondstadt.webp',
@@ -31,5 +37,6 @@ const genshin = {
 
 export const IMAGES = {
   landing,
+  logo,
   genshin,
 } as const;
