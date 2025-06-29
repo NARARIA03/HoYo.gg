@@ -48,7 +48,8 @@ const HeaderWrapper = styled.header`
   margin: 0 auto;
   padding: 0 10px;
   overflow: hidden;
-  background-color: #1e1e2f;
+  background-color: rgba(30, 30, 47, 0.8);
+  backdrop-filter: blur(8px);
   z-index: ${Z_INDEX.header};
 `;
 
