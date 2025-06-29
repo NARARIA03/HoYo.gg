@@ -2,7 +2,7 @@ import { IMAGES } from '@/constants/images';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
-import { forwardRef, type HTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 
 type Props = {
   /** 어떤 게임용 헤더를 렌더링할지 */
@@ -10,12 +10,12 @@ type Props = {
 };
 
 /** Genshin, Honkai:Starrail, Zenless Zone Zero 페이지 모두에서 사용될 공통 헤더입니다 */
-export const Header = forwardRef<HTMLAttributes<HTMLElement>, Props>(({ game }: Props) => {
+export const Header = forwardRef<HTMLElement, Props>(({ game }, ref) => {
   const mainLogoSrc = IMAGES.logo[game];
   const otherLogoSrcs = Object.entries(IMAGES.logo).filter(([key]) => key !== game);
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper ref={ref}>
       <LogoWrapper>
         <ListItem>
           <FitLink href={game}>
