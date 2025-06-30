@@ -21,23 +21,30 @@ export const Header = forwardRef<HTMLElement, Props>(({ game }, ref) => {
 
   return (
     <HeaderWrapper ref={ref}>
-      <LogoWrapper>
-        <ListItem>
-          <FitLink href={game}>
-            <LogoImage src={mainLogoSrc} width={60} height={60} alt={`${game} logo`} />
-          </FitLink>
-        </ListItem>
-        {otherLogoSrcs.map(([href, src]) => (
-          <ListItem key={src}>
-            <FitLink href={href}>
-              <LogoImage src={src} width={40} height={40} alt={`${href} logo`} css={{ opacity: 0.6 }} />
-            </FitLink>
-          </ListItem>
-        ))}
+      <LeftBox>
+        <StyledNav>
+          <Heading $game={game}>
+            HoYo<span>.GG</span>
+          </Heading>
+          <StyledUl>
+            <ListItem>
+              <FitLink href={game}>
+                <LogoImage src={mainLogoSrc} width={55} height={55} alt={`${game} logo`} />
+              </FitLink>
+            </ListItem>
+            {otherLogoSrcs.map(([href, src]) => (
+              <ListItem key={src}>
+                <FitLink href={href}>
+                  <LogoImage src={src} width={40} height={40} alt={`${href} logo`} css={disabledCss} />
+                </FitLink>
+              </ListItem>
+            ))}
+          </StyledUl>
+        </StyledNav>
         <BackgroundImageWrapper $game={game}>
           <Image src={backgroundSrc} alt="backgroundSrc" fill />
         </BackgroundImageWrapper>
-      </LogoWrapper>
+      </LeftBox>
     </HeaderWrapper>
   );
 });
@@ -48,11 +55,8 @@ const HeaderWrapper = styled.header`
   position: sticky;
   top: 0;
   width: 100%;
-  height: 80px;
+  height: 120px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
   padding: 0 10px;
   overflow: hidden;
   background-color: rgba(30, 30, 47, 0.8);
@@ -60,11 +64,54 @@ const HeaderWrapper = styled.header`
   z-index: ${Z_INDEX.header};
 `;
 
-const LogoWrapper = styled.ul`
+const LeftBox = styled.div`
   position: relative;
   width: 160px;
-  height: 60px;
   display: flex;
+  align-items: center;
+  gap: 15px;
+`;
+
+const StyledNav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const Heading = styled.h1<{ $game: TGame }>`
+  font-size: 38px;
+  font-weight: 800;
+  color: #eee;
+  letter-spacing: -0.5px;
+  line-height: 38px;
+  user-select: none;
+
+  & > span {
+    font-size: 26px;
+
+    ${({ $game }) => {
+      if ($game === 'genshin') {
+        return css`
+          color: #4a90e2;
+        `;
+      }
+      if ($game === 'zzz') {
+        return css`
+          color: #f59e42;
+        `;
+      }
+      if ($game === 'hsr') {
+        return css`
+          color: #d89cb5;
+        `;
+      }
+    }}
+  }
+`;
+
+const StyledUl = styled.ul`
+  display: flex;
+  justify-content: center;
   align-items: flex-end;
   gap: 10px;
 `;
@@ -92,8 +139,8 @@ const LogoImage = styled(Image)`
 
 const BackgroundImageWrapper = styled.div<{ $game: TGame }>`
   position: relative;
-  width: 300px;
-  height: 150px;
+  width: 360px;
+  height: 200px;
   flex-shrink: 0;
   z-index: -1;
   pointer-events: none;
@@ -102,28 +149,34 @@ const BackgroundImageWrapper = styled.div<{ $game: TGame }>`
   & > img {
     opacity: 0.35;
     object-fit: cover;
+    filter: grayscale(0.5);
   }
 
   ${({ $game }) => {
     if ($game === 'genshin') {
       return css`
-        top: 90px;
+        top: 50px;
         left: 20px;
         scale: 1.3;
       `;
     }
     if ($game === 'zzz') {
       return css`
-        top: 50px;
+        top: 10px;
         left: -20px;
       `;
     }
     if ($game === 'hsr') {
       return css`
-        top: 80px;
+        top: 55px;
         left: -75px;
         scale: 1.8;
       `;
     }
   }}
+`;
+
+const disabledCss = css`
+  filter: grayscale(0.6);
+  opacity: 0.6;
 `;

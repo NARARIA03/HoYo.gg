@@ -21,14 +21,14 @@ describe('헤더 컴포넌트 테스트 코드', () => {
     expect(link).toHaveAttribute('href', 'zzz');
   });
 
-  test('현재 페이지 로고는 60x60이고, 나머지 로고는 40x40', () => {
+  test('현재 페이지 로고는 55x55이고, 나머지 로고는 40x40', () => {
     render(<Header game="genshin" />);
     const images = screen.getAllByRole('img');
 
     images.forEach((image, idx) => {
       if (idx === images.length - 1) return;
 
-      const size = idx === 0 ? '60' : '40';
+      const size = idx === 0 ? '55' : '40';
       expect(image).toHaveAttribute('width', size);
       expect(image).toHaveAttribute('height', size);
     });
