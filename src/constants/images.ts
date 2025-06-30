@@ -10,6 +10,12 @@ const logo = {
   zzz: '/images/logos/ZZZ.webp',
 } as const;
 
+const header = {
+  genshin: '/images/header/hutao.webp',
+  hsr: '/images/header/silverwolf.webp',
+  zzz: '/images/header/anby.webp',
+} as const;
+
 const genshin = {
   emblem: {
     몬드: '/images/genshin/emblem/Mondstadt.webp',
@@ -38,5 +44,6 @@ const genshin = {
 export const IMAGES = {
   landing,
   logo,
+  header,
   genshin,
 } as const;

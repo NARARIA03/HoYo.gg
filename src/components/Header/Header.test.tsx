@@ -26,6 +26,8 @@ describe('헤더 컴포넌트 테스트 코드', () => {
     const images = screen.getAllByRole('img');
 
     images.forEach((image, idx) => {
+      if (idx === images.length - 1) return;
+
       const size = idx === 0 ? '60' : '40';
       expect(image).toHaveAttribute('width', size);
       expect(image).toHaveAttribute('height', size);

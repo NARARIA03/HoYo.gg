@@ -1,19 +1,23 @@
 import { IMAGES } from '@/constants/images';
 import { Z_INDEX } from '@/styles/theme';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
 import { forwardRef } from 'react';
 
+type TGame = 'genshin' | 'hsr' | 'zzz';
+
 type Props = {
   /** 어떤 게임용 헤더를 렌더링할지 */
-  game: 'genshin' | 'hsr' | 'zzz';
+  game: TGame;
 };
 
 /** Genshin, Honkai:Starrail, Zenless Zone Zero 페이지 모두에서 사용될 공통 헤더입니다 */
 export const Header = forwardRef<HTMLElement, Props>(({ game }, ref) => {
   const mainLogoSrc = IMAGES.logo[game];
   const otherLogoSrcs = Object.entries(IMAGES.logo).filter(([key]) => key !== game);
+  const backgroundSrc = IMAGES.header[game];
 
   return (
     <HeaderWrapper ref={ref}>
@@ -26,10 +30,13 @@ export const Header = forwardRef<HTMLElement, Props>(({ game }, ref) => {
         {otherLogoSrcs.map(([href, src]) => (
           <ListItem key={src}>
             <FitLink href={href}>
-              <LogoImage src={src} width={40} height={40} alt={`${href} logo`} css={{ opacity: 0.7 }} />
+              <LogoImage src={src} width={40} height={40} alt={`${href} logo`} css={{ opacity: 0.6 }} />
             </FitLink>
           </ListItem>
         ))}
+        <BackgroundImageWrapper $game={game}>
+          <Image src={backgroundSrc} alt="backgroundSrc" fill />
+        </BackgroundImageWrapper>
       </LogoWrapper>
     </HeaderWrapper>
   );
@@ -54,6 +61,7 @@ const HeaderWrapper = styled.header`
 `;
 
 const LogoWrapper = styled.ul`
+  position: relative;
   width: 160px;
   height: 60px;
   display: flex;
@@ -78,5 +86,44 @@ const FitLink = styled(Link)`
 const LogoImage = styled(Image)`
   object-fit: cover;
   pointer-events: none;
+  user-select: none;
   border-radius: 10px;
+`;
+
+const BackgroundImageWrapper = styled.div<{ $game: TGame }>`
+  position: relative;
+  width: 300px;
+  height: 150px;
+  flex-shrink: 0;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+
+  & > img {
+    opacity: 0.35;
+    object-fit: cover;
+  }
+
+  ${({ $game }) => {
+    if ($game === 'genshin') {
+      return css`
+        top: 90px;
+        left: 20px;
+        scale: 1.3;
+      `;
+    }
+    if ($game === 'zzz') {
+      return css`
+        top: 50px;
+        left: -20px;
+      `;
+    }
+    if ($game === 'hsr') {
+      return css`
+        top: 80px;
+        left: -75px;
+        scale: 1.8;
+      `;
+    }
+  }}
 `;
