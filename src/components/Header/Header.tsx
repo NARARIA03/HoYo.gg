@@ -44,7 +44,7 @@ export const Header = forwardRef<HTMLElement, Props>(({ game, className }, ref) 
           </StyledUl>
         </StyledNav>
         <BackgroundImageWrapper $game={game}>
-          <Image src={backgroundSrc} alt="backgroundSrc" fill />
+          <Image src={backgroundSrc} alt="" fill />
         </BackgroundImageWrapper>
       </LeftBox>
     </HeaderWrapper>
