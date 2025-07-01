@@ -11,9 +11,9 @@ const logo = {
 } as const;
 
 const header = {
-  genshin: '/images/header/hutao.webp',
-  hsr: '/images/header/silverwolf.webp',
-  zzz: '/images/header/anby.webp',
+  genshin: '/images/header/Hutao.webp',
+  hsr: '/images/header/Silverwolf.webp',
+  zzz: '/images/header/Anby.webp',
 } as const;
 
 const genshin = {
