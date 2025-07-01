@@ -11,23 +11,8 @@ const styles = css`
   html,
   body {
     height: 100%;
-    font-family:
-      'Pretendard Variable',
-      Pretendard,
-      -apple-system,
-      BlinkMacSystemFont,
-      system-ui,
-      Roboto,
-      'Helvetica Neue',
-      'Segoe UI',
-      'Apple SD Gothic Neo',
-      'Noto Sans KR',
-      'Malgun Gothic',
-      'Apple Color Emoji',
-      'Segoe UI Emoji',
-      'Segoe UI Symbol',
-      sans-serif;
-    background-color: #fff;
+    font-family: 'pretendard', 'pretendard Fallback';
+    background-color: rgba(30, 30, 47);
     color: #000;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
