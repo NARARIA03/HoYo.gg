@@ -11,6 +11,7 @@ const styles = css`
   html,
   body {
     height: 100%;
+    font-family: 'pretendard', 'pretendard Fallback';
     background-color: rgba(30, 30, 47);
     color: #000;
     line-height: 1.5;

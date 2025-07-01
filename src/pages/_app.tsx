@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <DefaultSeoContainer />
       <QueryClientProvider client={queryClient}>
-        {game && <Header game={game} />}
+        {game && <Header game={game} className={pretendard.className} />}
         <main className={pretendard.className}>
           <GlobalStyle />
           <Component {...pageProps} />
