@@ -1,12 +1,11 @@
 import { IMAGES } from '@/constants/images';
 import { Z_INDEX } from '@/styles/theme';
+import type { TGame } from '@/types/common';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
 import { forwardRef } from 'react';
-
-type TGame = 'genshin' | 'hsr' | 'zzz';
 
 type Props = {
   /** 어떤 게임용 헤더를 렌더링할지 */
