@@ -9,9 +9,9 @@ export const getPrimaryColor = (game: TGame) => {
     case 'genshin':
       return '#4a90e2';
     case 'hsr':
-      return '#f59e42';
-    case 'zzz':
       return '#d89cb5';
+    case 'zzz':
+      return '#f59e42';
     default:
       return '#eee';
   }
