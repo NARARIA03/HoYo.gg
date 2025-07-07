@@ -1,5 +1,5 @@
 import { IMAGES } from '@/constants/images';
-import { Z_INDEX } from '@/styles/theme';
+import { getPrimaryColor, Z_INDEX } from '@/styles/theme';
 import type { TGame } from '@/types/common';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -88,25 +88,8 @@ const Heading = styled.h1<{ $game: TGame }>`
   user-select: none;
 
   & > span {
-    font-size: 26px;
-
-    ${({ $game }) => {
-      if ($game === 'genshin') {
-        return css`
-          color: #4a90e2;
-        `;
-      }
-      if ($game === 'zzz') {
-        return css`
-          color: #f59e42;
-        `;
-      }
-      if ($game === 'hsr') {
-        return css`
-          color: #d89cb5;
-        `;
-      }
-    }}
+    font-size: 28px;
+    color: ${({ $game }) => getPrimaryColor($game)};
   }
 `;
 
