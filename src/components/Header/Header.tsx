@@ -1,4 +1,3 @@
-import { IMAGES } from '@/constants/images';
 import { getPrimaryColor, Z_INDEX } from '@/styles/theme';
 import type { TGame } from '@/types/common';
 import { css } from '@emotion/react';
@@ -14,11 +13,23 @@ type Props = {
   className?: string;
 };
 
+const LOGO = {
+  genshin: '/images/logos/Genshin.webp',
+  hsr: '/images/logos/HSR.webp',
+  zzz: '/images/logos/ZZZ.webp',
+} as const;
+
+const BACKGROUND = {
+  genshin: '/images/header/Hutao.webp',
+  hsr: '/images/header/Silverwolf.webp',
+  zzz: '/images/header/Anby.webp',
+} as const;
+
 /** Genshin, Honkai:Starrail, Zenless Zone Zero 페이지 모두에서 사용될 공통 헤더입니다 */
 export const Header = forwardRef<HTMLElement, Props>(({ game, className }, ref) => {
-  const mainLogoSrc = IMAGES.logo[game];
-  const otherLogoSrcs = Object.entries(IMAGES.logo).filter(([key]) => key !== game);
-  const backgroundSrc = IMAGES.header[game];
+  const mainLogoSrc = LOGO[game];
+  const otherLogoSrcs = Object.entries(LOGO).filter(([key]) => key !== game);
+  const backgroundSrc = BACKGROUND[game];
 
   return (
     <HeaderWrapper ref={ref} className={className}>
