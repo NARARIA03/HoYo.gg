@@ -4,7 +4,7 @@ import type { AppProps } from 'next/app';
 import { DefaultSeoContainer } from '@/modules/seo';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClientProvider } from '@tanstack/react-query';
-import { Header } from '@/components';
+import { Footer, Header } from '@/components';
 import { useInitQueryClient } from '@/hooks/useInitQueryClient';
 import { useParseGameQueryString } from '@/hooks/useParseGameQueryString';
 
@@ -28,6 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <GlobalStyle />
           <Component {...pageProps} />
         </main>
+        {game && <Footer game={game} className={pretendard.className} />}
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>
