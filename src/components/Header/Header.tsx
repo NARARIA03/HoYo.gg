@@ -14,9 +14,9 @@ type Props = {
 };
 
 const ICONS = {
-  genshin: '/images/icons/Genshin.webp',
-  hsr: '/images/icons/HSR.webp',
-  zzz: '/images/icons/ZZZ.webp',
+  genshin: '/images/gameIcons/Genshin.webp',
+  hsr: '/images/gameIcons/HSR.webp',
+  zzz: '/images/gameIcons/ZZZ.webp',
 } as const;
 
 const BACKGROUNDS = {

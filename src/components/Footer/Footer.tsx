@@ -47,6 +47,29 @@ export const Footer = forwardRef<HTMLElement, Props>(({ game, className }, ref) 
           <span>{TITLES[game]}</span>와 관련된 모든 관련 지적 재산권은 <span>HoYoverse</span>의 소유임을 밝힙니다.
         </p>
       </CopyrightTxtWrapper>
+      <ContactWrapper>
+        <ContactTitleTxt>Contect me</ContactTitleTxt>
+        <AnchorList>
+          <li>
+            <Anchor href="mailto:hyeonseong0305@gmail.com" rel="noopener noreferrer" target="_blank">
+              <Image src="/images/icons/gmail.png" width={20} height={20} alt="Gmail" />
+              hyeonseong0305@gmail.com
+            </Anchor>
+          </li>
+          <li>
+            <Anchor href="https://github.com/NARARIA03" rel="noopener noreferrer" target="_blank">
+              <Image src="/images/icons/github.png" width={20} height={20} alt="Github" />
+              NARARIA03
+            </Anchor>
+          </li>
+          <li>
+            <Anchor href="https://velog.io/@hyeonseong0305" rel="noopener noreferrer" target="_blank">
+              <Image src="/images/icons/velog.png" width={20} height={20} alt="Velog" />
+              NARARIA03
+            </Anchor>
+          </li>
+        </AnchorList>
+      </ContactWrapper>
     </StyledFooter>
   );
 });
@@ -55,12 +78,13 @@ Footer.displayName = 'Footer';
 
 const StyledFooter = styled.footer`
   width: 100%;
-  height: 240px;
+  min-height: 240px;
   display: flex;
   flex-direction: column;
   background-color: #1c1c2c;
   gap: 12px;
   padding: 21px;
+  user-select: none;
 `;
 
 const TitleWrapper = styled.div`
@@ -75,7 +99,6 @@ const TitleTxt = styled.p<{ $game: TGame }>`
   color: #eee;
   letter-spacing: -0.5px;
   line-height: 38px;
-  user-select: none;
 
   & > span {
     font-size: 28px;
@@ -92,7 +115,6 @@ const LogoWrapper = styled.div<{ $game: TGame }>`
   & > img {
     object-fit: contain;
     pointer-events: none;
-    user-select: none;
 
     ${({ $game }) => {
       if ($game === 'genshin') {
@@ -119,7 +141,6 @@ const CopyrightTxtWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  user-select: none;
 
   & > p {
     color: #777;
@@ -130,5 +151,45 @@ const CopyrightTxtWrapper = styled.div`
     & > span {
       font-weight: 800;
     }
+  }
+`;
+
+const ContactWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+const ContactTitleTxt = styled.p`
+  font-size: 20px;
+  font-weight: 800;
+  color: #eee;
+`;
+
+const AnchorList = styled.ul`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @media (max-width: 490px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`;
+
+const Anchor = styled.a`
+  display: flex;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #777;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+
+  &:hover {
+    color: #fff;
+    transform: translateY(-2px);
   }
 `;
