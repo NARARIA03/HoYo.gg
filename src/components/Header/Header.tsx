@@ -1,4 +1,4 @@
-import { getPrimaryColor, Z_INDEX } from '@/styles/theme';
+import { getPrimaryColor } from '@/styles/theme';
 import type { TGame } from '@/types/common';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -73,7 +73,7 @@ const HeaderWrapper = styled.header`
   overflow: hidden;
   background-color: rgba(30, 30, 47, 0.8);
   backdrop-filter: blur(8px);
-  z-index: ${Z_INDEX.header};
+  z-index: 100;
 `;
 
 const LeftBox = styled.div`
