@@ -4,20 +4,22 @@ import { motion } from 'motion/react';
 import type { ReactNode } from 'react';
 
 type Props = {
+  /** ActiveCard의 시작점 getBoundingClientRect 값입니다. */
   rect: DOMRect;
+  /** backdrop 영역을 누르면 실행되는 함수입니다. */
   onClose: () => void;
+  /** 자식 컴포넌트로 렌더링할 ReactNode입니다. */
   children: ReactNode;
 };
 
+/** 특정 요소를 클릭하면, 클릭한 요소의 위치에서 시작해서 화면 중앙으로 커지면서 회전하며 다가오는 애니메이션을 처리하는 컴포넌트입니다. */
 export const ActiveCard = ({ rect, onClose, children }: Props) => {
-  if (window === undefined) return null;
+  if (typeof window === 'undefined' || typeof document === 'undefined') return null;
 
   const center = {
     x: window.innerWidth / 2 - rect.width / 2,
     y: window.innerHeight / 2 - rect.height / 2,
   };
-
-  if (!document.body) return null;
 
   return createPortal(
     <AnimatedBackdrop
