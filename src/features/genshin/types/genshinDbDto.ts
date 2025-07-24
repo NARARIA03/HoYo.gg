@@ -76,7 +76,7 @@ export type FullGenshinCharacterDTO = {
   elementText: ElementTextDTO;
   affiliation: string; // 소속 단체 텍스트 (페보니우스 기사단, 우인단 등)
   associationType: AssociationTypeDTO;
-  region: RegionDTO;
+  region?: RegionDTO;
   substatType: string; // 레벨 올릴 때 들어가는 부스텟 ENum
   substatText: string; // 부스텟 텍스트
   constellation: string; // 별자리 텍스트
