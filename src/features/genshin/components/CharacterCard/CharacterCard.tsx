@@ -19,7 +19,7 @@ export type Props = {
   /** 사용 원소 */
   elementText: ElementTextDTO;
   /** 지역 */
-  region: RegionDTO;
+  region?: RegionDTO;
   /** 이미지 url */
   image: string;
   /** 클릭 콜백 */
@@ -44,8 +44,9 @@ export const CharacterCard = forwardRef<HTMLElement, Props>(
           <RarityImage src={IMAGES.genshin.rarity[rarity]} alt={`${rarity}등급 배경`} width={250} height={320} />
           <AvatarImage src={image} alt={name} width={240} height={240} />
           <ImageIcon
-            src={region && IMAGES.genshin.emblem[region]}
-            alt={region}
+            // Todo: 스커크 region 내려오면 제거
+            src={IMAGES.genshin.emblem[region || '스네즈나야']}
+            alt={region ?? '스네즈나야'}
             width={35}
             height={35}
             css={{ top: 10, right: 10 }}
