@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import { Hologram, type HologramProps } from './Hologram';
+import { Hologram } from './Hologram';
 import styled from '@emotion/styled';
-import { useRef } from 'react';
+import { type ComponentProps, useRef } from 'react';
 
 const meta = {
   title: 'Components/Common/Hologram',
@@ -11,7 +11,7 @@ const meta = {
 
 export default meta;
 
-export const Example: StoryFn<HologramProps> = (args) => {
+export const Example: StoryFn<ComponentProps<typeof Hologram>> = (args) => {
   const parentRef = useRef<HTMLDivElement | null>(null);
   return (
     <Wrapper ref={parentRef}>
