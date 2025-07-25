@@ -13,6 +13,8 @@ const meta = {
 
 export default meta;
 
+const ANIMATION_DURATION = 2400;
+
 export const Example: StoryFn<ComponentProps<typeof ActiveCard>> = () => {
   const triggerRef = useRef<HTMLElement>(null);
   const [activeCard, setActiveCard] = useState<{ rect: DOMRect } | null>(null);
@@ -33,7 +35,7 @@ export const Example: StoryFn<ComponentProps<typeof ActiveCard>> = () => {
       if (ref && ref.style.opacity !== '1') {
         ref.style.opacity = '1';
       }
-    }, 600);
+    }, ANIMATION_DURATION);
   };
 
   return (
@@ -41,7 +43,7 @@ export const Example: StoryFn<ComponentProps<typeof ActiveCard>> = () => {
       <CharacterCard ref={triggerRef} {...MOCK_DATA} onClick={handleClick} />
       <AnimatePresence>
         {activeCard && (
-          <ActiveCard rect={activeCard.rect} onClose={handleClose}>
+          <ActiveCard rect={activeCard.rect} onClose={handleClose} duration={ANIMATION_DURATION}>
             <CharacterCard {...MOCK_DATA} onClick={() => {}} />
           </ActiveCard>
         )}

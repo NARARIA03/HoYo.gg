@@ -15,6 +15,8 @@ type TActiveCard = {
 
 type TCardRefs = Record<number, HTMLElement | null>;
 
+const ANIMATION_DURATION = 800;
+
 export const CharacterListContainer = () => {
   const [activeCard, setActiveCard] = useState<TActiveCard | null>(null);
   const [isLockScroll, setIsLockScroll] = useState<boolean>(false);
@@ -41,7 +43,7 @@ export const CharacterListContainer = () => {
         }
       });
       setIsLockScroll(false);
-    }, 600);
+    }, ANIMATION_DURATION);
   };
 
   useLockBodyScroll({ isLock: isLockScroll });
@@ -67,7 +69,7 @@ export const CharacterListContainer = () => {
         ))}
         <AnimatePresence>
           {activeCard && (
-            <ActiveCard rect={activeCard.rect} onClose={handleCardClose}>
+            <ActiveCard rect={activeCard.rect} onClose={handleCardClose} duration={ANIMATION_DURATION}>
               <CharacterCard {...activeCard.character} onClick={() => {}} />
             </ActiveCard>
           )}
