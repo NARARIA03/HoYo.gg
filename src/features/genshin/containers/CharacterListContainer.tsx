@@ -34,15 +34,13 @@ export const CharacterListContainer = () => {
     }
   };
 
-  const handleCardClose = () => {
+  const handleCardClose = (id: number) => {
     setActiveCard(null);
     setTimeout(() => {
-      Object.values(cardRefs.current).map((ref) => {
-        if (ref && ref.style.opacity !== '1') {
-          ref.style.opacity = '1';
-        }
-      });
       setIsLockScroll(false);
+      if (cardRefs.current[id]) {
+        cardRefs.current[id].style.opacity = '1';
+      }
     }, ANIMATION_DURATION);
   };
 
@@ -69,7 +67,11 @@ export const CharacterListContainer = () => {
         ))}
         <AnimatePresence>
           {activeCard && (
-            <ActiveCard rect={activeCard.rect} onClose={handleCardClose} duration={ANIMATION_DURATION}>
+            <ActiveCard
+              rect={activeCard.rect}
+              onClose={() => handleCardClose(activeCard.id)}
+              duration={ANIMATION_DURATION}
+            >
               <CharacterCard {...activeCard.character} onClick={() => {}} />
             </ActiveCard>
           )}
