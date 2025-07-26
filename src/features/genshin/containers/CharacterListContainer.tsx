@@ -15,7 +15,7 @@ type TActiveCard = {
 
 type TCardRefs = Record<number, HTMLElement | null>;
 
-const ANIMATION_DURATION = 800;
+const ANIMATION_DURATION = 600;
 
 export const CharacterListContainer = () => {
   const [activeCard, setActiveCard] = useState<TActiveCard | null>(null);
@@ -89,5 +89,4 @@ const Grid = styled.div`
   gap: 20px;
   justify-content: center;
   padding: 20px;
-  will-change: transform;
 `;

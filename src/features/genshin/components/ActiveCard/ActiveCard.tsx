@@ -27,18 +27,34 @@ export const ActiveCard = ({ rect, onClose, duration, children }: Props) => {
   return createPortal(
     <AnimatedBackdrop
       onClick={onClose}
-      initial={{ background: 'rgba(0, 0, 0, 0)' }}
+      initial={{ background: 'rgba(0, 0, 0, 0)', zIndex: 999 }}
       animate={{ background: 'rgba(0, 0, 0, 0.4)' }}
-      exit={{ background: 'rgba(0, 0, 0, 0)' }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
+      exit={{ background: 'rgba(0, 0, 0, 0)', zIndex: 1 }}
+      transition={{ duration: 0.6, ease: 'easeInOut' }}
     >
       <AnimatedCardWrapper
         $width={rect.width}
         $height={rect.height}
-        initial={{ transform: `translate3d(${rect.left}px, ${rect.top}px, 0px) scale(1) rotateY(0deg)` }}
-        animate={{ transform: `translate3d(${center.x}px, ${center.y}px, 0px) scale(1.5) rotateY(360deg)` }}
-        exit={{ transform: `translate3d(${rect.left}px, ${rect.top}px, 0px) scale(1) rotateY(720deg)` }}
-        transition={{ duration: duration ? duration / 1000 : 0.8, ease: 'easeInOut' }}
+        initial={{
+          transformPerspective: 2000,
+          x: rect.left,
+          y: rect.top,
+          scale: 1,
+          rotateY: 0,
+        }}
+        animate={{
+          x: center.x,
+          y: center.y,
+          scale: 1.5,
+          rotateY: 360,
+        }}
+        exit={{
+          x: rect.left,
+          y: rect.top,
+          scale: 1,
+          rotateY: 720,
+        }}
+        transition={{ duration: duration ? duration / 1000 : 0.8 }}
         onClick={(e) => e.stopPropagation()}
       >
         <Card3D>
@@ -61,7 +77,6 @@ const AnimatedBackdrop = styled(motion.div)`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
-  z-index: 999;
 `;
 
 const AnimatedCardWrapper = styled(motion.div)<{ $width: number; $height: number }>`
@@ -77,7 +92,6 @@ const Card3D = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  perspective: 1200px;
   transform-style: preserve-3d;
 `;
 
@@ -85,8 +99,6 @@ const CardFront = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
   backface-visibility: hidden;
 `;
 
@@ -102,6 +114,10 @@ const BackImageWrapper = styled.div`
   height: 100%;
   border-radius: 10px;
   overflow: hidden;
+  box-shadow:
+    0 8px 12px rgba(0, 0, 0, 0.2),
+    0 12px 32px rgba(0, 0, 0, 0.25),
+    0 16px 48px rgba(0, 0, 0, 0.3);
 
   & > img {
     object-position: center -30px;
