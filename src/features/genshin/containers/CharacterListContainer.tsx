@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useGetGenshinCharacters } from '../hooks/queries/useGetGenshinCharacters';
 import type { MinimizedGenshinCharacterDTO } from '../types/genshinDbDto';
 import { useLockBodyScroll } from '@/hooks/useLockBodyScroll';
@@ -21,6 +21,7 @@ export const CharacterListContainer = () => {
   const [activeCard, setActiveCard] = useState<TActiveCard | null>(null);
   const [isLockScroll, setIsLockScroll] = useState<boolean>(false);
   const cardRefs = useRef<TCardRefs>({});
+  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const { data: characters } = useGetGenshinCharacters();
 
@@ -36,7 +37,7 @@ export const CharacterListContainer = () => {
 
   const handleCardClose = (id: number) => {
     setActiveCard(null);
-    setTimeout(() => {
+    timer.current = setTimeout(() => {
       setIsLockScroll(false);
       if (cardRefs.current[id]) {
         cardRefs.current[id].style.opacity = '1';
@@ -45,6 +46,10 @@ export const CharacterListContainer = () => {
   };
 
   useLockBodyScroll({ isLock: isLockScroll });
+
+  useEffect(() => {
+    return () => clearTimeout(timer.current);
+  }, []);
 
   return (
     <Wrapper>

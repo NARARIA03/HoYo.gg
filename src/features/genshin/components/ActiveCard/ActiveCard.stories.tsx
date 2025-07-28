@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import { useRef, useState, type ComponentProps } from 'react';
+import { useEffect, useRef, useState, type ComponentProps } from 'react';
 import { ActiveCard } from './ActiveCard';
 import type { MinimizedGenshinCharacterDTO } from '../../types/genshinDbDto';
 import { CharacterCard } from '../CharacterCard/CharacterCard';
@@ -17,6 +17,7 @@ const ANIMATION_DURATION = 2400;
 
 export const Example: StoryFn<ComponentProps<typeof ActiveCard>> = () => {
   const triggerRef = useRef<HTMLElement>(null);
+  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
   const [activeCard, setActiveCard] = useState<{ rect: DOMRect } | null>(null);
 
   const handleClick = () => {
@@ -30,13 +31,17 @@ export const Example: StoryFn<ComponentProps<typeof ActiveCard>> = () => {
 
   const handleClose = () => {
     setActiveCard(null);
-    setTimeout(() => {
+    timer.current = setTimeout(() => {
       const ref = triggerRef.current;
       if (ref && ref.style.opacity !== '1') {
         ref.style.opacity = '1';
       }
     }, ANIMATION_DURATION);
   };
+
+  useEffect(() => {
+    return () => clearTimeout(timer.current);
+  }, []);
 
   return (
     <>
