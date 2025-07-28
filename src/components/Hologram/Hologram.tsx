@@ -1,13 +1,13 @@
 import { useEffect, type RefObject, type HTMLAttributes, type PropsWithChildren, useRef } from 'react';
 import styled from '@emotion/styled';
 
-export type HologramProps = {
+type Props = {
   /** 기준점이 될 부모 element의 ref */
   parentRef: RefObject<HTMLElement | null>;
 } & PropsWithChildren<HTMLAttributes<HTMLDivElement>>;
 
 /** 커서 위치에 따라 빛이 들어오는 효과가 움직이는 오버레이 컴포넌트입니다 */
-export const Hologram = ({ parentRef, ...props }: HologramProps) => {
+export const Hologram = ({ parentRef, ...props }: Props) => {
   const childRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

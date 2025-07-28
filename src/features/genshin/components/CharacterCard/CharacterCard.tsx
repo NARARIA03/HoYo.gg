@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { forwardRef, useRef } from 'react';
 import { IMAGES } from '@/constants/images';
 import { Glare, Hologram } from '@/components';
 import { useTiltEffect } from '../../hooks/useTiltEffect';
 import type { ElementTextDTO, RegionDTO } from '../../types/genshinDbDto';
+import { mergeRefs } from '@/utils';
 
-type Props = {
+export type Props = {
   /** 이름 */
   name: string;
   /** 타이틀 */
@@ -18,7 +19,7 @@ type Props = {
   /** 사용 원소 */
   elementText: ElementTextDTO;
   /** 지역 */
-  region: RegionDTO;
+  region?: RegionDTO;
   /** 이미지 url */
   image: string;
   /** 클릭 콜백 */
@@ -28,48 +29,54 @@ type Props = {
 /**
  * 캐릭터별 카드를 렌더링하는 컴포넌트입니다.
  */
-export const CharacterCard = ({ name, title, description, rarity, elementText, region, image, onClick }: Props) => {
-  const wrapperRef = useRef(null);
-  const cardRef = useRef(null);
+export const CharacterCard = forwardRef<HTMLElement, Props>(
+  ({ name, title, description, rarity, elementText, region, image, onClick }, forwardedRef) => {
+    const wrapperRef = useRef(null);
+    const cardRef = useRef(null);
 
-  useTiltEffect({ parentRef: wrapperRef, childRef: cardRef });
+    useTiltEffect({ parentRef: wrapperRef, childRef: cardRef });
 
-  return (
-    <TiltBox ref={wrapperRef}>
-      <Wrapper ref={cardRef} onClick={onClick}>
-        <Hologram parentRef={wrapperRef} css={{ zIndex: 3 }} />
-        <Glare parentRef={wrapperRef} css={{ zIndex: 3 }} />
-        <RarityImage src={IMAGES.genshin.rarity[rarity]} alt={`${rarity}등급 배경`} width={250} height={320} />
-        <AvatarImage src={image} alt={name} width={240} height={240} />
-        <ImageIcon
-          src={region && IMAGES.genshin.emblem[region]}
-          alt={region}
-          width={35}
-          height={35}
-          css={{ top: 10, right: 10 }}
-        />
-        <ImageIcon
-          src={IMAGES.genshin.element[elementText]}
-          alt={`${elementText} 원소`}
-          width={35}
-          height={35}
-          css={{ top: 50, right: 10 }}
-        />
-        <TextsBox>
-          <NameTxt>
-            {title} · {name}
-          </NameTxt>
-          <DescriptionTxt>{description}</DescriptionTxt>
-        </TextsBox>
-      </Wrapper>
-    </TiltBox>
-  );
-};
+    return (
+      <TiltBox ref={mergeRefs(forwardedRef, wrapperRef)}>
+        <Wrapper ref={cardRef} onClick={onClick}>
+          <Hologram parentRef={wrapperRef} css={{ zIndex: 3 }} />
+          <Glare parentRef={wrapperRef} css={{ zIndex: 3 }} />
+          <RarityImage src={IMAGES.genshin.rarity[rarity]} alt={`${rarity}등급 배경`} width={250} height={320} />
+          <AvatarImage src={image} alt={name} width={240} height={240} />
+          <ImageIcon
+            // Todo: 스커크 region 내려오면 제거
+            src={IMAGES.genshin.emblem[region || '스네즈나야']}
+            alt={region ?? '스네즈나야'}
+            width={35}
+            height={35}
+            css={{ top: 10, right: 10 }}
+          />
+          <ImageIcon
+            src={IMAGES.genshin.element[elementText]}
+            alt={`${elementText} 원소`}
+            width={35}
+            height={35}
+            css={{ top: 50, right: 10 }}
+          />
+          <TextsBox>
+            <NameTxt>
+              {title} · {name}
+            </NameTxt>
+            <DescriptionTxt>{description}</DescriptionTxt>
+          </TextsBox>
+        </Wrapper>
+      </TiltBox>
+    );
+  }
+);
+
+CharacterCard.displayName = 'CharacterCard';
 
 const TiltBox = styled.section`
   width: fit-content;
   height: fit-content;
   padding: 15px;
+  will-change: transform;
 `;
 
 const Wrapper = styled.div`
@@ -86,6 +93,7 @@ const Wrapper = styled.div`
   cursor: pointer;
   transition: transform 0.1s ease;
   transform-style: preserve-3d;
+  overflow: hidden;
 
   & > * {
     position: relative;

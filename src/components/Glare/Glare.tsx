@@ -1,13 +1,13 @@
 import { useEffect, useRef, type HTMLAttributes, type PropsWithChildren, type RefObject } from 'react';
 import styled from '@emotion/styled';
 
-export type GlareProps = {
+type Props = {
   /** 기준점이 될 부모 element의 ref */
   parentRef: RefObject<HTMLElement | null>;
 } & PropsWithChildren<HTMLAttributes<HTMLDivElement>>;
 
 /** 커서 주변을 밝게 해주는 오버레이 컴포넌트입니다 */
-export const Glare = ({ parentRef, ...props }: GlareProps) => {
+export const Glare = ({ parentRef, ...props }: Props) => {
   const childRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

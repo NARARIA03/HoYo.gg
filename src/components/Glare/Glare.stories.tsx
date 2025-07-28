@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import styled from '@emotion/styled';
-import { useRef } from 'react';
-import { Glare, type GlareProps } from './Glare';
+import { type ComponentProps, useRef } from 'react';
+import { Glare } from './Glare';
 
 const meta = {
   title: 'Components/Common/Glare',
@@ -11,7 +11,7 @@ const meta = {
 
 export default meta;
 
-export const Example: StoryFn<GlareProps> = (args) => {
+export const Example: StoryFn<ComponentProps<typeof Glare>> = (args) => {
   const parentRef = useRef<HTMLDivElement | null>(null);
   return (
     <Wrapper ref={parentRef}>

@@ -1,4 +1,4 @@
-import { getGenshinCharacterDetail } from '@/features/genshin';
+import { getGenshinCharacterDetail } from '@/features/genshin/apis/getGenshinCharacterDetail';
 import { isAxiosError } from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
