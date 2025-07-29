@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { forwardRef } from 'react';
 
 type Props = {
-  /** 어떤 게임용 헤더를 렌더링할지 */
+  /** 어떤 게임용 Footer를 렌더링할지 */
   game: TGame;
   /** next/font/local 주입용 className */
   className?: string;
@@ -48,7 +48,7 @@ export const Footer = forwardRef<HTMLElement, Props>(({ game, className }, ref) 
         </p>
       </CopyrightTxtWrapper>
       <ContactWrapper>
-        <ContactTitleTxt>Contect me</ContactTitleTxt>
+        <ContactTitleTxt>Contact me</ContactTitleTxt>
         <AnchorList>
           <li>
             <Anchor href="mailto:hyeonseong0305@gmail.com" rel="noopener noreferrer" target="_blank">
