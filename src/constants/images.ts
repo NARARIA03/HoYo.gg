@@ -7,6 +7,7 @@ const genshin = {
     폰타인: '/images/genshin/emblem/Fontaine.webp',
     나타: '/images/genshin/emblem/Natlan.webp',
     스네즈나야: '/images/genshin/emblem/Snezhnaya.webp',
+    노드크라이: '/images/genshin/emblem/Nodkrai.webp',
   },
   rarity: {
     4: '/images/genshin/rarity/4Star.webp',
