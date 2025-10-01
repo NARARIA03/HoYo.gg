@@ -5,13 +5,14 @@ import { BASE_URL } from '@/constants/env';
 export const DefaultSeoContainer = () => {
   const router = useRouter();
 
-  const asPath = router.asPath;
+  const canonical = `${BASE_URL}${router.pathname}`;
+
   const openGraph = {
     type: 'website',
     locale: 'ko_KR',
-    url: BASE_URL,
+    url: canonical,
     siteName: 'HoYo.gg',
   };
 
-  return <DefaultSeo openGraph={openGraph} canonical={asPath} />;
+  return <DefaultSeo openGraph={openGraph} canonical={canonical} />;
 };
