@@ -20,7 +20,7 @@ const typescriptTypeImportRule = {
 const noConsoleRule = {
   files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
   rules: {
-    'no-console': 'error',
+    'no-console': ['error', { allow: ['error'] }],
   },
 };
 
