@@ -43,7 +43,8 @@ export type ElementTypeDTO =
 /**
  * 지역명 Text
  */
-export type RegionDTO = '몬드' | '수메르' | '이나즈마' | '스네즈나야' | '리월' | '폰타인' | '나타' | '';
+export type RegionDTO = '몬드' | '수메르' | '이나즈마' | '스네즈나야' | '리월' | '폰타인' | '나타' | '노드크라이';
+export type Region = RegionDTO | '없음';
 
 /**
  * 무기 Text
@@ -117,6 +118,6 @@ export type MinimizedGenshinCharacterDTO = {
   description: string;
   rarity: 4 | 5;
   elementText: ElementTextDTO;
-  region: RegionDTO;
+  region: Region;
   image: string;
 };
