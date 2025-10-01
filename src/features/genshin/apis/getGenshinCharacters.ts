@@ -30,7 +30,7 @@ const preprocessGenshinCharacters = (characters: FullGenshinCharacterDTO[]): Min
       description,
       rarity,
       elementText,
-      region: region ?? '',
+      region: region ?? '없음',
       image: `https://enka.network/ui/${images['filename_icon']}.png`,
       ...(overrideCharacterMap[id] && { ...overrideCharacterMap[id] }),
     }));

@@ -6,8 +6,9 @@ const genshin = {
     수메르: '/images/genshin/emblem/Sumeru.webp',
     폰타인: '/images/genshin/emblem/Fontaine.webp',
     나타: '/images/genshin/emblem/Natlan.webp',
-    스네즈나야: '/images/genshin/emblem/Snezhnaya.webp',
+    스네즈나야: '/images/genshin/emblem/Snezhnaya.webp', // Todo: 실제 스네즈나야 아이콘 나오면 변경
     노드크라이: '/images/genshin/emblem/Nodkrai.webp',
+    없음: '/images/genshin/emblem/Snezhnaya.webp',
   },
   rarity: {
     4: '/images/genshin/rarity/4Star.webp',
