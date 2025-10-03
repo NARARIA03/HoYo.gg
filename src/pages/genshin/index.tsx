@@ -1,4 +1,4 @@
-import { CharacterListContainer } from '@/features/genshin/containers/CharacterListContainer';
+import CharacterListContainer from '@/features/genshin/containers/CharacterListContainer';
 import { prefetchGenshinCharacters } from '@/features/genshin/hooks/queries/useGetGenshinCharacters';
 import { SeoContainer } from '@/modules/seo';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
