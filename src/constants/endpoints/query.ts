@@ -1,7 +1,7 @@
 import { BASE_URL } from '../env';
 
 const genshin = {
-  character: {
+  characters: {
     list: `${BASE_URL}/api/genshin/characters`,
     detail: (characterId: string) => `${BASE_URL}/api/genshin/characters/${encodeURIComponent(characterId)}`,
   },
