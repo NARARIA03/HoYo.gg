@@ -1,4 +1,4 @@
-import { getPrimaryColor } from '@/styles/theme';
+import { getPrimaryColor, MAX_WIDTH } from '@/styles/theme';
 import type { TGame } from '@/types/common';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -83,13 +83,15 @@ const StyledFooter = styled.footer`
   flex-direction: column;
   background-color: #1c1c2c;
   gap: 12px;
-  padding: 21px;
+  padding: 20px 10px;
   user-select: none;
 `;
 
 const TitleWrapper = styled.div`
   display: flex;
-  justify-content: start;
+  width: 100%;
+  max-width: ${MAX_WIDTH};
+  margin: 0 auto;
   align-items: center;
 `;
 
@@ -138,6 +140,8 @@ const LogoWrapper = styled.div<{ $game: TGame }>`
 
 const CopyrightTxtWrapper = styled.div`
   width: 100%;
+  max-width: ${MAX_WIDTH};
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -156,6 +160,8 @@ const CopyrightTxtWrapper = styled.div`
 
 const ContactWrapper = styled.div`
   width: 100%;
+  max-width: ${MAX_WIDTH};
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 8px;

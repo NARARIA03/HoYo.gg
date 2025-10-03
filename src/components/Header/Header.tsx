@@ -1,4 +1,4 @@
-import { getPrimaryColor } from '@/styles/theme';
+import { getPrimaryColor, MAX_WIDTH } from '@/styles/theme';
 import type { TGame } from '@/types/common';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -33,7 +33,7 @@ export const Header = forwardRef<HTMLElement, Props>(({ game, className }, ref) 
 
   return (
     <HeaderWrapper ref={ref} className={className}>
-      <LeftBox>
+      <HeaderBox>
         <StyledNav>
           <Heading $game={game}>
             HoYo<span>.GG</span>
@@ -56,7 +56,7 @@ export const Header = forwardRef<HTMLElement, Props>(({ game, className }, ref) 
         <BackgroundImageWrapper $game={game}>
           <Image src={backgroundSrc} alt="" fill />
         </BackgroundImageWrapper>
-      </LeftBox>
+      </HeaderBox>
     </HeaderWrapper>
   );
 });
@@ -76,12 +76,14 @@ const HeaderWrapper = styled.header`
   z-index: 100;
 `;
 
-const LeftBox = styled.div`
+const HeaderBox = styled.div`
   position: relative;
-  width: 160px;
+  max-width: ${MAX_WIDTH};
+  width: 100%;
+  margin: 0 auto;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 15px;
 `;
 
 const StyledNav = styled.nav`
@@ -157,8 +159,9 @@ const BackgroundImageWrapper = styled.div<{ $game: TGame }>`
     }
     if ($game === 'zzz') {
       return css`
-        top: 10px;
+        top: 20px;
         left: -20px;
+        scale: 1.3;
       `;
     }
     if ($game === 'hsr') {

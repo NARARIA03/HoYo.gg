@@ -9,3 +9,5 @@ export const getPrimaryColor = (game: TGame) => {
 
   return color[game];
 };
+
+export const MAX_WIDTH = '1024px';
