@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
         hostname: 'i.redd.it',
         pathname: '**/*',
       },
+      {
+        hostname: 'api.hakush.in',
+        pathname: '**/*',
+      },
     ],
   },
 };
