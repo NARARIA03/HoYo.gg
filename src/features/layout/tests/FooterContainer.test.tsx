@@ -1,10 +1,10 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { Footer } from './Footer';
+import FooterContainer from '../containers/FooterContainer';
 
 describe('푸터 컴포넌트 테스트 코드', () => {
   it('원신 Footer 렌더링 확인', () => {
-    render(<Footer game="genshin" />);
+    render(<FooterContainer game="genshin" />);
 
     const target = screen.getByText((_, element) => {
       return (
@@ -19,7 +19,7 @@ describe('푸터 컴포넌트 테스트 코드', () => {
   });
 
   it('스타레일 Footer 렌더링 확인', () => {
-    render(<Footer game="hsr" />);
+    render(<FooterContainer game="hsr" />);
 
     const target = screen.getByText((_, element) => {
       return (
@@ -34,7 +34,7 @@ describe('푸터 컴포넌트 테스트 코드', () => {
   });
 
   it('젠레스 Footer 렌더링 확인', () => {
-    render(<Footer game="zzz" />);
+    render(<FooterContainer game="zzz" />);
 
     const target = screen.getByText((_, element) => {
       return (
@@ -49,7 +49,7 @@ describe('푸터 컴포넌트 테스트 코드', () => {
   });
 
   it('Contact 정보 확인', () => {
-    render(<Footer game="zzz" />);
+    render(<FooterContainer game="zzz" />);
 
     const email = screen.getByAltText('Gmail').closest('a');
     const github = screen.getByAltText('Github').closest('a');
