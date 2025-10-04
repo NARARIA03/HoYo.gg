@@ -4,18 +4,23 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { NAV_ITEM } from '../constants';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { css } from '@emotion/react';
 
 type Props = {
   game: TGame;
 };
 
 export default function GlobalNavBar({ game }: Props) {
+  const router = useRouter();
+  const asPath = router.asPath;
+
   return (
     <StyledNav>
       <List>
         {NAV_ITEM[game].map(({ icon, link, text }) => (
           <li key={link}>
-            <StyledLink href={link} $game={game}>
+            <StyledLink href={link} $game={game} $isSelected={asPath === link}>
               <Image src={icon} alt={text} width={30} height={30} />
               <p>{text}</p>
             </StyledLink>
@@ -36,7 +41,7 @@ const List = styled.ul`
   display: flex;
 `;
 
-const StyledLink = styled(Link)<{ $game: TGame }>`
+const StyledLink = styled(Link)<{ $game: TGame; $isSelected: boolean }>`
   position: relative;
   width: 80px;
   display: flex;
@@ -64,6 +69,12 @@ const StyledLink = styled(Link)<{ $game: TGame }>`
     }
   }
 
+  ${({ $isSelected, $game }) =>
+    $isSelected &&
+    css`
+      color: ${getPrimaryColor($game)};
+    `}
+
   &:hover {
     color: ${({ $game }) => getPrimaryColor($game)};
     background-color: rgba(255, 255, 255, 0.05);
@@ -83,6 +94,8 @@ const StyledLink = styled(Link)<{ $game: TGame }>`
     ${mediaQuery.max768} {
       width: 40px;
     }
+
+    ${({ $isSelected }) => $isSelected && `transform: scaleX(1);`}
   }
 
   &:hover::after {
