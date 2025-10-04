@@ -1,4 +1,4 @@
-import type { TGame } from '@/types/common';
+import type { TGame, TRank } from '@/types/common';
 
 export const getPrimaryColor = (game: TGame) => {
   const color: Record<TGame, string> = {
@@ -8,6 +8,19 @@ export const getPrimaryColor = (game: TGame) => {
   };
 
   return color[game];
+};
+
+export const getRankBgColor = (rank: TRank) => {
+  const color: Record<TRank, string> = {
+    sp: 'linear-gradient(180deg, #694148, #b35c50)',
+    s: 'linear-gradient(180deg, #945c2c, #b27330)',
+    a: 'linear-gradient(180deg, #5e5789, #9c75b7)',
+    b: 'linear-gradient(180deg, #567496, #5392b8)',
+    c: 'linear-gradient(180deg, #4b6c67, #519072)',
+    d: 'linear-gradient(180deg, #6a6d74, #868586)',
+  };
+
+  return color[rank];
 };
 
 export const MAX_WIDTH = '1024px';
