@@ -35,7 +35,7 @@ export default function Card({ name, imageUrl, rank, leftIcon, rightIcon, href }
 
 const StyledFigure = styled.figure`
   position: relative;
-  width: 100px;
+  width: 120px;
   background-color: #eee;
   border-radius: 8px;
   overflow: hidden;
@@ -61,7 +61,7 @@ const StyledFigcaption = styled.figcaption`
   font-size: 14px;
   font-weight: 500;
   text-align: center;
-  padding: 6px 12px;
+  padding: 6px 0;
 `;
 
 const IconImage = styled(Image)`
