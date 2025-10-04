@@ -1,4 +1,4 @@
-import { getPrimaryColor } from '@/styles/theme';
+import { getPrimaryColor, mediaQuery } from '@/styles/theme';
 import type { TGame } from '@/types/common';
 import styled from '@emotion/styled';
 import Link from 'next/link';
@@ -17,7 +17,7 @@ export default function GlobalNavBar({ game }: Props) {
           <li key={link}>
             <StyledLink href={link} $game={game}>
               <Image src={icon} alt={text} width={30} height={30} />
-              {text}
+              <p>{text}</p>
             </StyledLink>
           </li>
         ))}
@@ -30,8 +30,6 @@ const StyledNav = styled.nav`
   position: absolute;
   bottom: 0;
   right: 0;
-  background-color: rgba(30, 30, 47, 0.6);
-  backdrop-filter: blur(2px);
 `;
 
 const List = styled.ul`
@@ -39,19 +37,56 @@ const List = styled.ul`
 `;
 
 const StyledLink = styled(Link)<{ $game: TGame }>`
+  position: relative;
   width: 80px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+  gap: 4px;
   padding: 4px 0;
   font-size: 14px;
   font-weight: 600;
   color: #eee;
   transition: background-color 0.2s ease;
+  border-bottom: 2px solid transparent;
   transition: color 0.2s ease;
 
+  ${mediaQuery.max768} {
+    width: 40px;
+  }
+
+  & > p {
+    padding-inline: 4px;
+
+    ${mediaQuery.max768} {
+      display: none;
+    }
+  }
+
   &:hover {
-    background-color: rgba(255, 255, 255, 0.05);
     color: ${({ $game }) => getPrimaryColor($game)};
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -2px;
+    background-color: ${({ $game }) => getPrimaryColor($game)};
+    transform-origin: bottom center;
+    transition: transform 0.2s ease-out;
+
+    ${mediaQuery.max768} {
+      width: 40px;
+    }
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom center;
   }
 `;
