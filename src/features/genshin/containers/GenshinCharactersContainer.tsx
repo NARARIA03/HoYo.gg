@@ -3,6 +3,7 @@ import { useGetGenshinCharacters } from '../hooks/queries/useGetGenshinCharacter
 import Card from '@/components/Character/Card';
 import { getGenshinAvatarUrl, getGenshinRank } from '../utils';
 import { MAX_WIDTH } from '@/styles/theme';
+import { IMAGES } from '@/constants/images';
 
 export default function GenshinCharactersContainer() {
   const { data: characters } = useGetGenshinCharacters();
@@ -18,6 +19,10 @@ export default function GenshinCharactersContainer() {
             name={character.KR}
             rank={getGenshinRank(character.rank)}
             imageUrl={getGenshinAvatarUrl(character.icon)}
+            rightIcon={{
+              src: IMAGES.genshin.element[character.element],
+              alt: character.element,
+            }}
             href=""
           />
         ))}
