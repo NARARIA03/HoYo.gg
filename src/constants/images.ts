@@ -10,10 +10,6 @@ const genshin = {
     노드크라이: '/images/genshin/emblem/Nodkrai.webp',
     없음: '/images/genshin/emblem/Snezhnaya.webp',
   },
-  rarity: {
-    4: '/images/genshin/rarity/4Star.webp',
-    5: '/images/genshin/rarity/5Star.webp',
-  },
   element: {
     바위: '/images/genshin/elements/Geo.webp',
     풀: '/images/genshin/elements/Dendro.webp',
