@@ -10,14 +10,21 @@ type IconProps = {
 };
 
 type Props = {
+  /** 캐릭터명, 장비명 등 */
   name: string;
+  /** 캐릭터, 장비 이미지 등 URL */
   imageUrl: string;
+  /** 등급 */
   rank: TRank;
+  /** 좌상단 아이콘 */
   leftIcon?: IconProps;
+  /** 우상단 아이콘 */
   rightIcon?: IconProps;
+  /** 클릭 시 이동할 URL */
   href: string;
 };
 
+/** 전역적으로 사용할 카드 컴포넌트입니다. 캐릭터, 아이템, 장비 등에 사용됩니다. */
 export const Card = ({ name, imageUrl, rank, leftIcon, rightIcon, href }: Props) => {
   return (
     <Link href={href}>
