@@ -18,7 +18,7 @@ type Props = {
   href: string;
 };
 
-export default function Card({ name, imageUrl, rank, leftIcon, rightIcon, href }: Props) {
+export const Card = ({ name, imageUrl, rank, leftIcon, rightIcon, href }: Props) => {
   return (
     <Link href={href}>
       <StyledFigure>
@@ -31,7 +31,7 @@ export default function Card({ name, imageUrl, rank, leftIcon, rightIcon, href }
       </StyledFigure>
     </Link>
   );
-}
+};
 
 const StyledFigure = styled.figure`
   position: relative;
