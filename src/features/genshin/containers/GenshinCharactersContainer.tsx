@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import { useGetGenshinCharacters } from '../hooks/queries/useGetGenshinCharacters';
-import Card from '@/components/Character/Card';
 import { getGenshinAvatarUrl, getGenshinRank } from '../utils';
 import { MAX_WIDTH } from '@/styles/theme';
 import { IMAGES } from '@/constants/images';
+import { Card } from '@/components';
 
 export default function GenshinCharactersContainer() {
   const { data: characters } = useGetGenshinCharacters();

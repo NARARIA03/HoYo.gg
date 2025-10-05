@@ -41,7 +41,7 @@ export const CharacterCard = forwardRef<HTMLElement, Props>(
         <Wrapper ref={cardRef} onClick={onClick}>
           <Hologram parentRef={wrapperRef} css={{ zIndex: 3 }} />
           <Glare parentRef={wrapperRef} css={{ zIndex: 3 }} />
-          <RarityImage src={IMAGES.genshin.rarity[rarity]} alt={`${rarity}등급 배경`} width={250} height={320} />
+          <RarityImage src={'#'} alt={`${rarity}등급 배경`} width={250} height={320} />
           <AvatarImage src={image} alt={name} width={240} height={240} />
           <ImageIcon
             src={IMAGES.genshin.emblem[region]}
@@ -50,13 +50,7 @@ export const CharacterCard = forwardRef<HTMLElement, Props>(
             height={35}
             css={{ top: 10, right: 10 }}
           />
-          <ImageIcon
-            src={IMAGES.genshin.element[elementText]}
-            alt={`${elementText} 원소`}
-            width={35}
-            height={35}
-            css={{ top: 50, right: 10 }}
-          />
+          <ImageIcon src={'#'} alt={`${elementText} 원소`} width={35} height={35} css={{ top: 50, right: 10 }} />
           <TextsBox>
             <NameTxt>
               {title} · {name}
