@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
-import type { GICharactersDTO } from '../../types/chatactersDto';
 import { Card } from '@/components';
-import { getGenshinAvatarUrl, getGenshinRank } from '../../utils';
 import { IMAGES } from '@/constants/images';
+import { getGenshinAvatarUrl, getGenshinRank } from '../../utils';
+import type { GICharactersDTO } from '../../types/chatactersDto';
 
 type Props = {
   /** 캐릭터 리스트 API 응답 */
@@ -14,23 +14,24 @@ export const GenshinCardList = ({ characters }: Props) => {
   return (
     <Grid>
       {Object.entries(characters).map(([id, character]) => (
-        <Card
-          key={id}
-          name={character.KR}
-          rank={getGenshinRank(character.rank)}
-          imageUrl={getGenshinAvatarUrl(character.icon)}
-          rightIcon={{
-            src: IMAGES.genshin.element[character.element],
-            alt: character.element,
-          }}
-          href=""
-        />
+        <li key={id}>
+          <Card
+            name={character.KR}
+            rank={getGenshinRank(character.rank)}
+            imageUrl={getGenshinAvatarUrl(character.icon)}
+            rightIcon={{
+              src: IMAGES.genshin.element[character.element],
+              alt: character.element,
+            }}
+            href=""
+          />
+        </li>
       ))}
     </Grid>
   );
 };
 
-const Grid = styled.div`
+const Grid = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
