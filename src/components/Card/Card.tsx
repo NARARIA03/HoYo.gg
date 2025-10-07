@@ -43,7 +43,7 @@ export const Card = ({ name, imageUrl, rank, leftIcon, rightIcon, href }: Props)
 const StyledFigure = styled.figure`
   position: relative;
   width: 120px;
-  background-color: #eee;
+  height: 150px;
   border-radius: 8px;
   overflow: hidden;
 `;
@@ -51,10 +51,8 @@ const StyledFigure = styled.figure`
 const ImageWrapper = styled.div<{ $rank: TRank }>`
   position: relative;
   width: 100%;
-  aspect-ratio: 1;
+  height: 100%;
   background: ${({ $rank }) => getRankBgColor($rank)};
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
   overflow: hidden;
 
   & > img {
@@ -65,10 +63,17 @@ const ImageWrapper = styled.div<{ $rank: TRank }>`
 `;
 
 const StyledFigcaption = styled.figcaption`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 8px 0;
+  backdrop-filter: blur(5px) brightness(60%);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   text-align: center;
-  padding: 6px 0;
+  color: rgba(255, 255, 255, 0.8);
 `;
 
 const IconImage = styled(Image)`
