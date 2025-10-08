@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import { Card } from '@/components';
 import { IMAGES } from '@/constants/images';
+import { getObjectEntries } from '@/utils';
+import { useGenshinQueryParams } from '../../hooks/useGenshinQueryParams';
 import { getGenshinAvatarUrl, getGenshinRank } from '../../utils';
 import type { GICharactersDTO } from '../../types/chatactersDto';
 
@@ -11,9 +13,20 @@ type Props = {
 
 /** 원신 캐릭터 카드 리스트 컴포넌트입니다. */
 export const GenshinCardList = ({ characters }: Props) => {
+  const { queryParams } = useGenshinQueryParams();
+
+  const filteredCharacters = getObjectEntries(characters).filter(([_, character]) => {
+    const { element, weapon, rank } = queryParams;
+    const passesElement = !element.length || element.includes(character.element);
+    const passesWeapon = !weapon.length || weapon.includes(character.weapon);
+    const passesRank = !rank.length || rank.includes(character.rank);
+
+    return passesElement && passesWeapon && passesRank;
+  });
+
   return (
     <Grid>
-      {Object.entries(characters).map(([id, character]) => (
+      {filteredCharacters.map(([id, character]) => (
         <li key={id}>
           <Card
             name={character.KR}

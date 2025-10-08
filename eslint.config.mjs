@@ -24,10 +24,25 @@ const noConsoleRule = {
   },
 };
 
+const noUnusedVarsRule = {
+  files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+  rules: {
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+      },
+    ],
+  },
+};
+
 const eslintConfig = [
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
   typescriptTypeImportRule,
   noConsoleRule,
+  noUnusedVarsRule,
   eslintConfigPrettier,
 ];
 
