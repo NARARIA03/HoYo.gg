@@ -12,7 +12,7 @@ type Props = {
 
 export default function GlobalNavBar({ game }: Props) {
   const router = useRouter();
-  const asPath = router.asPath;
+  const pathname = router.pathname;
 
   return (
     <StyledNav>
@@ -20,9 +20,9 @@ export default function GlobalNavBar({ game }: Props) {
         {NAV_ITEM[game].map(({ icon, link, text }) => (
           <li key={link}>
             <Link href={link}>
-              <NavItemWrapper $game={game} $isSelected={asPath === link}>
+              <NavItemWrapper $game={game} $isSelected={link === pathname}>
                 <Image src={icon} alt={text} width={30} height={30} />
-                <Text $game={game} $isSelected={asPath === link}>
+                <Text $game={game} $isSelected={link === pathname}>
                   {text}
                 </Text>
               </NavItemWrapper>
