@@ -1,4 +1,5 @@
 import type { TGame, TRank } from '@/types/common';
+import { MAX_WIDTH } from './layout';
 
 export const getPrimaryColor = (game: TGame) => {
   const color: Record<TGame, string> = {
@@ -22,8 +23,6 @@ export const getRankBgColor = (rank: TRank) => {
 
   return color[rank];
 };
-
-export const MAX_WIDTH = '1024px';
 
 export const mediaQuery = {
   /** 모바일 */

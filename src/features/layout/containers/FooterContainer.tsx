@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
-import type { LayoutProps } from '../types';
-import { getPrimaryColor, MAX_WIDTH } from '@/styles/theme';
 import { css } from '@emotion/react';
+import Image from 'next/image';
+import { MAX_WIDTH } from '@/styles/layout';
+import { getPrimaryColor } from '@/styles/theme';
 import type { TGame } from '@/types/common';
 import { GAME_LOGO, GAME_TITLE } from '../constants';
-import Image from 'next/image';
+import type { LayoutProps } from '../types';
 
 /** Genshin, Honkai:Starrail, Zenless Zone Zero 페이지 모두에서 사용될 공통 푸터입니다 */
 export default function FooterContainer({ game, className }: LayoutProps) {
