@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import styled from '@emotion/styled';
 import { IMAGES } from '@/constants/images';
+import { HEADER_HEIGHT, MAX_WIDTH, TOP_Z_INDEX } from '@/styles/layout';
 import { getObjectEntries } from '@/utils';
 import { useGenshinQueryParams } from '../../hooks/useGenshinQueryParams';
 import type { GIElementDTO, GIRankDTO, GIWeaponDTO } from '../../types/baseDto';
-import { HEADER_HEIGHT, TOP_Z_INDEX } from '@/styles/layout';
 
 const elements = getObjectEntries(IMAGES.genshin.element);
 const weapons = getObjectEntries(IMAGES.genshin.weapon);
@@ -51,53 +51,61 @@ export const CharacterFilter = () => {
   };
 
   return (
-    <StyledNav>
-      <StyledList>
-        {elements.map(([element, url]) => (
-          <StyledListItem key={element} $isActive={isElementActive(element)}>
-            <StyledButton onClick={() => toggleElement(element)}>
-              <Image src={url} width={32} height={32} alt={element} />
+    <Wrapper>
+      <StyledNav>
+        <StyledList>
+          {elements.map(([element, url]) => (
+            <StyledListItem key={element} $isActive={isElementActive(element)}>
+              <StyledButton onClick={() => toggleElement(element)}>
+                <Image src={url} width={32} height={32} alt={element} />
+              </StyledButton>
+            </StyledListItem>
+          ))}
+        </StyledList>
+        <StyledList>
+          {weapons.map(([weapon, url]) => (
+            <StyledListItem key={weapon} $isActive={isWeaponActive(weapon)}>
+              <StyledButton onClick={() => toggleWeapon(weapon)}>
+                <Image src={url} width={32} height={32} alt={weapon} />
+              </StyledButton>
+            </StyledListItem>
+          ))}
+        </StyledList>
+        <StyledList>
+          <StyledListItem $isActive={isRankActive('QUALITY_ORANGE_SP')}>
+            <StyledButton onClick={() => toggleRank('QUALITY_ORANGE_SP')} css={{ color: '#cc6a64' }}>
+              ★
             </StyledButton>
           </StyledListItem>
-        ))}
-      </StyledList>
-      <StyledList>
-        {weapons.map(([weapon, url]) => (
-          <StyledListItem key={weapon} $isActive={isWeaponActive(weapon)}>
-            <StyledButton onClick={() => toggleWeapon(weapon)}>
-              <Image src={url} width={32} height={32} alt={weapon} />
+          <StyledListItem onClick={() => toggleRank('QUALITY_ORANGE')} $isActive={isRankActive('QUALITY_ORANGE')}>
+            <StyledButton css={{ color: '#ffb139' }}>★</StyledButton>
+          </StyledListItem>
+          <StyledListItem $isActive={isRankActive('QUALITY_PURPLE')}>
+            <StyledButton onClick={() => toggleRank('QUALITY_PURPLE')} css={{ color: '#d28fd6' }}>
+              ★
             </StyledButton>
           </StyledListItem>
-        ))}
-      </StyledList>
-      <StyledList>
-        <StyledListItem $isActive={isRankActive('QUALITY_ORANGE_SP')}>
-          <StyledButton onClick={() => toggleRank('QUALITY_ORANGE_SP')} css={{ color: '#cc6a64' }}>
-            ★
-          </StyledButton>
-        </StyledListItem>
-        <StyledListItem onClick={() => toggleRank('QUALITY_ORANGE')} $isActive={isRankActive('QUALITY_ORANGE')}>
-          <StyledButton css={{ color: '#ffb139' }}>★</StyledButton>
-        </StyledListItem>
-        <StyledListItem $isActive={isRankActive('QUALITY_PURPLE')}>
-          <StyledButton onClick={() => toggleRank('QUALITY_PURPLE')} css={{ color: '#d28fd6' }}>
-            ★
-          </StyledButton>
-        </StyledListItem>
-      </StyledList>
-    </StyledNav>
+        </StyledList>
+      </StyledNav>
+    </Wrapper>
   );
 };
 
-const StyledNav = styled.nav`
+const Wrapper = styled.div`
   position: sticky;
   top: ${HEADER_HEIGHT};
-  display: flex;
-  gap: 24px;
   padding: 15px 0;
   background-color: rgba(30, 30, 47, 0.8);
   backdrop-filter: blur(8px);
   z-index: ${TOP_Z_INDEX};
+`;
+
+const StyledNav = styled.nav`
+  width: 100%;
+  max-width: ${MAX_WIDTH};
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
 `;
 
 const StyledList = styled.ul`

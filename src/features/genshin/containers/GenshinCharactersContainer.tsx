@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { MAX_WIDTH } from '@/styles/layout';
 import { GenshinCardList } from '../components/GenshinCardList/GenshinCardList';
 import { useGetGenshinCharacters } from '../hooks/queries/useGetGenshinCharacters';
 import { CharacterFilter } from '../components/CharacterFilter/CharacterFilter';
@@ -18,9 +17,6 @@ export default function GenshinCharactersContainer() {
 }
 
 const Wrapper = styled.section`
-  width: 100%;
-  max-width: ${MAX_WIDTH};
-  margin: 0 auto;
   padding: 0 0 20px 0;
   background-color: rgb(30, 30, 47);
 `;

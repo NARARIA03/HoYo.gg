@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { Card } from '@/components';
 import { IMAGES } from '@/constants/images';
+import { MAX_WIDTH } from '@/styles/layout';
 import { getObjectEntries } from '@/utils';
 import { useGenshinQueryParams } from '../../hooks/useGenshinQueryParams';
 import { getGenshinAvatarUrl, getGenshinRank } from '../../utils';
@@ -45,6 +46,9 @@ export const GenshinCardList = ({ characters }: Props) => {
 };
 
 const Grid = styled.ul`
+  width: 100%;
+  max-width: ${MAX_WIDTH};
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
