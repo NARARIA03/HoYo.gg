@@ -35,7 +35,7 @@ export const useGenshinQueryParams = () => {
       { ...router.query }
     );
 
-    router.push({ pathname: router.pathname, query }, undefined, {
+    router.replace({ pathname: router.pathname, query }, undefined, {
       shallow: true,
       scroll: false,
     });
