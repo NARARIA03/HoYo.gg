@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styled from '@emotion/styled';
 import { IMAGES } from '@/constants/images';
 import { HEADER_HEIGHT, MAX_WIDTH, TOP_Z_INDEX } from '@/styles/layout';
+import { mediaQuery } from '@/styles/theme';
 import { getObjectEntries } from '@/utils';
 import { useGenshinQueryParams } from '../../hooks/useGenshinQueryParams';
 import type { GIElementDTO, GIRankDTO, GIWeaponDTO } from '../../types/baseDto';
@@ -106,6 +107,12 @@ const StyledNav = styled.nav`
   margin: 0 auto;
   display: flex;
   gap: 24px;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  ${mediaQuery.max768} {
+    padding: 0 10px;
+  }
 `;
 
 const StyledList = styled.ul`
