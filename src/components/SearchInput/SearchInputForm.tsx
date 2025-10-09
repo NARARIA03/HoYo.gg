@@ -17,6 +17,7 @@ export const SearchInputForm = (props: Props) => {
 };
 
 const SearchForm = styled.form`
+  width: fit-content;
   position: relative;
   display: flex;
   align-items: center;
