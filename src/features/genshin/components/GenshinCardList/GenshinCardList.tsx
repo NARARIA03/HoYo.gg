@@ -17,12 +17,14 @@ export const GenshinCardList = ({ characters }: Props) => {
   const { queryParams } = useGenshinQueryParams();
 
   const filteredCharacters = getObjectEntries(characters).filter(([_, character]) => {
-    const { element, weapon, rank } = queryParams;
+    const { element, weapon, rank, keyword } = queryParams;
+
     const passesElement = !element.length || element.includes(character.element);
     const passesWeapon = !weapon.length || weapon.includes(character.weapon);
     const passesRank = !rank.length || rank.includes(character.rank);
+    const passesKeyword = !keyword || character.KR.includes(keyword);
 
-    return passesElement && passesWeapon && passesRank;
+    return passesElement && passesWeapon && passesRank && passesKeyword;
   });
 
   return (
