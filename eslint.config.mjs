@@ -38,11 +38,19 @@ const noUnusedVarsRule = {
   },
 };
 
+const noUnknownPropertyRule = {
+  files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+  rules: {
+    'react/no-unknown-property': 'error',
+  },
+};
+
 const eslintConfig = [
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
   typescriptTypeImportRule,
   noConsoleRule,
   noUnusedVarsRule,
+  noUnknownPropertyRule,
   eslintConfigPrettier,
 ];
 
