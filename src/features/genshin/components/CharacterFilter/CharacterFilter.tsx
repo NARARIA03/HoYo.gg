@@ -1,54 +1,31 @@
 import Image from 'next/image';
 import styled from '@emotion/styled';
-import { IMAGES } from '@/constants/images';
+import { css } from '@emotion/react';
 import { HEADER_HEIGHT, MAX_WIDTH, TOP_Z_INDEX } from '@/styles/layout';
 import { mediaQuery } from '@/styles/theme';
-import { getObjectEntries } from '@/utils';
+import { elements, rankColorMap, ranks, weapons } from '../../constants';
 import { useGenshinQueryParams } from '../../hooks/useGenshinQueryParams';
-import type { GIElementDTO, GIRankDTO, GIWeaponDTO } from '../../types/baseDto';
 
-const elements = getObjectEntries(IMAGES.genshin.element);
-const weapons = getObjectEntries(IMAGES.genshin.weapon);
-
-// Todo: 추상화가 조금 더 가능할 것 같다.
-// * active, toggle 함수의 파라미터를 확장하고, 타입에 따라 다른 객체를 확인하는 등...
 export const CharacterFilter = () => {
   const { queryParams, setQueryParams } = useGenshinQueryParams();
 
-  const isElementActive = (element: GIElementDTO) => {
-    if (!queryParams.element.length) return true;
-    return queryParams.element.includes(element);
+  const isActive = <T extends Exclude<keyof typeof queryParams, 'keyword'>>(
+    key: T,
+    value: (typeof queryParams)[T][number]
+  ) => {
+    if (!queryParams?.[key].length) return true;
+    return queryParams?.[key].some((v) => v === value);
   };
 
-  const toggleElement = (element: GIElementDTO) => {
-    const newElementParams = queryParams.element.includes(element)
-      ? queryParams.element.filter((el) => el !== element)
-      : [...queryParams.element, element];
-    setQueryParams({ element: newElementParams });
-  };
+  const handleToggle = <T extends Exclude<keyof typeof queryParams, 'keyword'>>(
+    key: T,
+    value: (typeof queryParams)[T][number]
+  ) => {
+    const newParams = queryParams?.[key].some((v) => v === value)
+      ? queryParams?.[key].filter((v) => v !== value)
+      : [...queryParams?.[key], value];
 
-  const isWeaponActive = (weapon: GIWeaponDTO) => {
-    if (!queryParams.weapon.length) return true;
-    return queryParams.weapon.includes(weapon);
-  };
-
-  const toggleWeapon = (weapon: GIWeaponDTO) => {
-    const newWeaponParams = queryParams.weapon.includes(weapon)
-      ? queryParams.weapon.filter((el) => el !== weapon)
-      : [...queryParams.weapon, weapon];
-    setQueryParams({ weapon: newWeaponParams });
-  };
-
-  const isRankActive = (rank: GIRankDTO) => {
-    if (!queryParams.rank.length) return true;
-    return queryParams.rank.includes(rank);
-  };
-
-  const toggleRank = (rank: GIRankDTO) => {
-    const newRankParams = queryParams.rank.includes(rank)
-      ? queryParams.rank.filter((el) => el !== rank)
-      : [...queryParams.rank, rank];
-    setQueryParams({ rank: newRankParams });
+    setQueryParams({ [key]: newParams });
   };
 
   return (
@@ -56,8 +33,8 @@ export const CharacterFilter = () => {
       <StyledNav>
         <StyledList>
           {elements.map(([element, url]) => (
-            <StyledListItem key={element} $isActive={isElementActive(element)}>
-              <StyledButton onClick={() => toggleElement(element)}>
+            <StyledListItem key={element} $isActive={isActive('element', element)}>
+              <StyledButton onClick={() => handleToggle('element', element)}>
                 <Image src={url} width={32} height={32} alt={element} />
               </StyledButton>
             </StyledListItem>
@@ -65,27 +42,21 @@ export const CharacterFilter = () => {
         </StyledList>
         <StyledList>
           {weapons.map(([weapon, url]) => (
-            <StyledListItem key={weapon} $isActive={isWeaponActive(weapon)}>
-              <StyledButton onClick={() => toggleWeapon(weapon)}>
+            <StyledListItem key={weapon} $isActive={isActive('weapon', weapon)}>
+              <StyledButton onClick={() => handleToggle('weapon', weapon)}>
                 <Image src={url} width={32} height={32} alt={weapon} />
               </StyledButton>
             </StyledListItem>
           ))}
         </StyledList>
         <StyledList>
-          <StyledListItem $isActive={isRankActive('QUALITY_ORANGE_SP')}>
-            <StyledButton onClick={() => toggleRank('QUALITY_ORANGE_SP')} css={{ color: '#cc6a64' }}>
-              ★
-            </StyledButton>
-          </StyledListItem>
-          <StyledListItem onClick={() => toggleRank('QUALITY_ORANGE')} $isActive={isRankActive('QUALITY_ORANGE')}>
-            <StyledButton css={{ color: '#ffb139' }}>★</StyledButton>
-          </StyledListItem>
-          <StyledListItem $isActive={isRankActive('QUALITY_PURPLE')}>
-            <StyledButton onClick={() => toggleRank('QUALITY_PURPLE')} css={{ color: '#d28fd6' }}>
-              ★
-            </StyledButton>
-          </StyledListItem>
+          {ranks.map((rank) => (
+            <StyledListItem key={rank} $isActive={isActive('rank', rank)}>
+              <StyledButton onClick={() => handleToggle('rank', rank)} $rank={rank}>
+                ★
+              </StyledButton>
+            </StyledListItem>
+          ))}
         </StyledList>
       </StyledNav>
     </Wrapper>
@@ -138,7 +109,7 @@ const StyledListItem = styled.li<{ $isActive: boolean }>`
   }
 `;
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<{ $rank?: (typeof ranks)[number] }>`
   width: 100%;
   height: 100%;
   display: flex;
@@ -147,4 +118,17 @@ const StyledButton = styled.button`
   padding: 0;
   font-size: 28px;
   cursor: pointer;
+
+  ${({ $rank }) => {
+    if ($rank) {
+      return css`
+        color: ${rankColorMap[$rank]};
+      `;
+    }
+  }}
+
+  & > img {
+    user-select: none;
+    pointer-events: none;
+  }
 `;
