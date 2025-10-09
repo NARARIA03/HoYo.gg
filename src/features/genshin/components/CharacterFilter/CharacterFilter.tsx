@@ -1,11 +1,14 @@
 import Image from 'next/image';
+import type { FormEvent } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import { SearchInputForm } from '@/components';
 import { HEADER_HEIGHT, MAX_WIDTH, TOP_Z_INDEX } from '@/styles/layout';
 import { mediaQuery } from '@/styles/theme';
 import { elements, rankColorMap, ranks, weapons } from '../../constants';
 import { useGenshinQueryParams } from '../../hooks/useGenshinQueryParams';
 
+// Todo: 모바일에서는 원소, 무기를 드롭다운으로 선택하게 변경, 드롭다운은 멀티셀렉이 가능한 형태의 공통 컴포넌트로 구현이 필요할듯.
 export const CharacterFilter = () => {
   const { queryParams, setQueryParams } = useGenshinQueryParams();
 
@@ -26,6 +29,13 @@ export const CharacterFilter = () => {
       : [...queryParams?.[key], value];
 
     setQueryParams({ [key]: newParams });
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const keyword = formData.get('keyword') as string;
+    setQueryParams({ keyword: keyword || undefined });
   };
 
   return (
@@ -58,6 +68,7 @@ export const CharacterFilter = () => {
             </StyledListItem>
           ))}
         </StyledList>
+        <SearchInputForm onSubmit={handleSubmit} />
       </StyledNav>
     </Wrapper>
   );
@@ -77,6 +88,7 @@ const StyledNav = styled.nav`
   max-width: ${MAX_WIDTH};
   margin: 0 auto;
   display: flex;
+  align-items: center;
   gap: 24px;
   overflow-x: auto;
   overflow-y: hidden;
