@@ -1,41 +1,23 @@
-import { getPrimaryColor } from '@/styles/theme';
-import type { TGame } from '@/types/common';
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import type { LayoutProps } from '../types';
+import { getPrimaryColor, MAX_WIDTH } from '@/styles/theme';
+import { css } from '@emotion/react';
+import type { TGame } from '@/types/common';
+import { GAME_LOGO, GAME_TITLE } from '../constants';
 import Image from 'next/image';
-import { forwardRef } from 'react';
-
-type Props = {
-  /** 어떤 게임용 Footer를 렌더링할지 */
-  game: TGame;
-  /** next/font/local 주입용 className */
-  className?: string;
-};
-
-const LOGOS = {
-  genshin: '/images/logos/Genshin.webp',
-  hsr: '/images/logos/HSR.webp',
-  zzz: '/images/logos/ZZZ.webp',
-};
-
-const TITLES = {
-  genshin: 'Genshin Impact',
-  hsr: 'Honkai: Star Rail',
-  zzz: 'Zenless Zone Zero',
-};
 
 /** Genshin, Honkai:Starrail, Zenless Zone Zero 페이지 모두에서 사용될 공통 푸터입니다 */
-export const Footer = forwardRef<HTMLElement, Props>(({ game, className }, ref) => {
-  const mainLogoSrc = LOGOS[game];
+export default function FooterContainer({ game, className }: LayoutProps) {
+  const mainLogo = GAME_LOGO[game];
 
   return (
-    <StyledFooter ref={ref} className={className}>
+    <StyledFooter className={className}>
       <TitleWrapper>
         <TitleTxt $game={game}>
           HoYo<span>.GG</span>
         </TitleTxt>
         <LogoWrapper $game={game}>
-          <Image src={mainLogoSrc} fill alt={`${game} title logo`} />
+          <Image src={mainLogo} fill alt={`${game} title logo`} />
         </LogoWrapper>
       </TitleWrapper>
       <CopyrightTxtWrapper>
@@ -44,7 +26,7 @@ export const Footer = forwardRef<HTMLElement, Props>(({ game, className }, ref) 
           없습니다.
         </p>
         <p>
-          <span>{TITLES[game]}</span>와 관련된 모든 관련 지적 재산권은 <span>HoYoverse</span>의 소유임을 밝힙니다.
+          <span>{GAME_TITLE[game]}</span>와 관련된 모든 관련 지적 재산권은 <span>HoYoverse</span>의 소유임을 밝힙니다.
         </p>
       </CopyrightTxtWrapper>
       <ContactWrapper>
@@ -72,9 +54,7 @@ export const Footer = forwardRef<HTMLElement, Props>(({ game, className }, ref) 
       </ContactWrapper>
     </StyledFooter>
   );
-});
-
-Footer.displayName = 'Footer';
+}
 
 const StyledFooter = styled.footer`
   width: 100%;
@@ -83,13 +63,15 @@ const StyledFooter = styled.footer`
   flex-direction: column;
   background-color: #1c1c2c;
   gap: 12px;
-  padding: 21px;
+  padding: 20px 10px;
   user-select: none;
 `;
 
 const TitleWrapper = styled.div`
   display: flex;
-  justify-content: start;
+  width: 100%;
+  max-width: ${MAX_WIDTH};
+  margin: 0 auto;
   align-items: center;
 `;
 
@@ -138,6 +120,8 @@ const LogoWrapper = styled.div<{ $game: TGame }>`
 
 const CopyrightTxtWrapper = styled.div`
   width: 100%;
+  max-width: ${MAX_WIDTH};
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -156,6 +140,8 @@ const CopyrightTxtWrapper = styled.div`
 
 const ContactWrapper = styled.div`
   width: 100%;
+  max-width: ${MAX_WIDTH};
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 8px;

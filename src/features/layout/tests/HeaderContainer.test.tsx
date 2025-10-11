@@ -1,34 +1,45 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { Header } from './Header';
+import HeaderContainer from '../containers/HeaderContainer';
+
+vi.mock('next/router', () => ({
+  useRouter: () => ({
+    asPath: '',
+  }),
+}));
 
 describe('헤더 컴포넌트 테스트 코드', () => {
   test('원신 링크가 존재하는지 확인', () => {
-    render(<Header game="genshin" />);
+    render(<HeaderContainer game="genshin" />);
     const link = screen.getByRole('link', { name: 'genshin logo' });
     expect(link).toHaveAttribute('href', 'genshin');
   });
 
   test('스타레일 링크가 존재하는지 확인', () => {
-    render(<Header game="hsr" />);
+    render(<HeaderContainer game="hsr" />);
     const link = screen.getByRole('link', { name: 'hsr logo' });
     expect(link).toHaveAttribute('href', 'hsr');
   });
 
   test('젠레스 링크가 존재하는지 확인', () => {
-    render(<Header game="zzz" />);
+    render(<HeaderContainer game="zzz" />);
     const link = screen.getByRole('link', { name: 'zzz logo' });
     expect(link).toHaveAttribute('href', 'zzz');
   });
 
   test('현재 페이지 로고는 55x55이고, 나머지 로고는 40x40', () => {
-    render(<Header game="genshin" />);
-    const images = screen.getAllByRole('img').filter((img) => img.getAttribute('alt') !== '');
+    render(<HeaderContainer game="genshin" />);
 
-    images.forEach((image, idx) => {
-      const size = idx === 0 ? '55' : '40';
-      expect(image).toHaveAttribute('width', size);
-      expect(image).toHaveAttribute('height', size);
+    const testCase = [
+      ['genshin', '55'],
+      ['hsr', '40'],
+      ['zzz', '40'],
+    ] as const;
+
+    testCase.forEach(([game, size]) => {
+      const logo = screen.getByAltText(`${game} logo`);
+      expect(logo).toHaveAttribute('width', size);
+      expect(logo).toHaveAttribute('height', size);
     });
   });
 });

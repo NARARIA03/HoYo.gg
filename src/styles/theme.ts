@@ -9,3 +9,12 @@ export const getPrimaryColor = (game: TGame) => {
 
   return color[game];
 };
+
+export const MAX_WIDTH = '1024px';
+
+export const mediaQuery = {
+  /** 모바일 */
+  max768: '@media (max-width: 768px)',
+  /** PC 기준 좌우 여백이 0이 되는 지점 */
+  max1190: `@media (max-width: ${MAX_WIDTH})`,
+};
