@@ -10,18 +10,14 @@ const genshin = {
     노드크라이: '/images/genshin/emblem/Nodkrai.webp',
     없음: '/images/genshin/emblem/Snezhnaya.webp',
   },
-  rarity: {
-    4: '/images/genshin/rarity/4Star.webp',
-    5: '/images/genshin/rarity/5Star.webp',
-  },
   element: {
-    바위: '/images/genshin/elements/Geo.webp',
-    풀: '/images/genshin/elements/Dendro.webp',
-    얼음: '/images/genshin/elements/Cryo.webp',
-    불: '/images/genshin/elements/Pyro.webp',
-    물: '/images/genshin/elements/Hydro.webp',
-    번개: '/images/genshin/elements/Electro.webp',
-    바람: '/images/genshin/elements/Anemo.webp',
+    Geo: '/images/genshin/elements/Geo.webp',
+    Dendro: '/images/genshin/elements/Dendro.webp',
+    Cryo: '/images/genshin/elements/Cryo.webp',
+    Pyro: '/images/genshin/elements/Pyro.webp',
+    Hydro: '/images/genshin/elements/Hydro.webp',
+    Electro: '/images/genshin/elements/Electro.webp',
+    Anemo: '/images/genshin/elements/Anemo.webp',
   },
 } as const;
 
