@@ -1,14 +1,15 @@
 const genshin = {
   emblem: {
-    몬드: '/images/genshin/emblem/Mondstadt.webp',
-    리월: '/images/genshin/emblem/Liyue.webp',
-    이나즈마: '/images/genshin/emblem/Inazuma.webp',
-    수메르: '/images/genshin/emblem/Sumeru.webp',
-    폰타인: '/images/genshin/emblem/Fontaine.webp',
-    나타: '/images/genshin/emblem/Natlan.webp',
-    스네즈나야: '/images/genshin/emblem/Snezhnaya.webp', // Todo: 실제 스네즈나야 아이콘 나오면 변경
-    노드크라이: '/images/genshin/emblem/Nodkrai.webp',
-    없음: '/images/genshin/emblem/Snezhnaya.webp',
+    ASSOC_TYPE_MONDSTADT: '/images/genshin/emblem/Mondstadt.webp',
+    ASSOC_TYPE_LIYUE: '/images/genshin/emblem/Liyue.webp',
+    ASSOC_TYPE_INAZUMA: '/images/genshin/emblem/Inazuma.webp',
+    ASSOC_TYPE_SUMERU: '/images/genshin/emblem/Sumeru.webp',
+    ASSOC_TYPE_FONTAINE: '/images/genshin/emblem/Fontaine.webp',
+    ASSOC_TYPE_NATLAN: '/images/genshin/emblem/Natlan.webp',
+    ASSOC_TYPE_NODKRAI: '/images/genshin/emblem/Nodkrai.webp',
+    ASSOC_TYPE_MAINACTOR: '/images/genshin/emblem/Unknown.webp', // Todo: 물음표로 유지
+    ASSOC_TYPE_FATUI: '/images/genshin/emblem/Fatui.webp',
+    ASSOC_TYPE_OMNI_SCOURGE: '/images/genshin/emblem/Unknown.webp', // Todo: 물음표로 유지 (스커크 전용)
   },
   element: {
     Geo: '/images/genshin/elements/Geo.webp',
