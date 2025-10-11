@@ -16,13 +16,13 @@ export default function GameListNavBar({ game }: Props) {
     <List>
       <ListItem>
         <StyledLink href={game}>
-          <ActiveImage src={mainLogo} width={55} height={55} alt={game} />
+          <ActiveImage src={mainLogo} width={55} height={55} alt={`${game} logo`} />
         </StyledLink>
       </ListItem>
-      {otherLogos.map(([href, src]) => (
-        <ListItem key={src}>
-          <StyledLink href={href}>
-            <DisabledImage src={src} width={40} height={40} alt={href} />
+      {otherLogos.map(([game, src]) => (
+        <ListItem key={game}>
+          <StyledLink href={game}>
+            <DisabledImage src={src} width={40} height={40} alt={`${game} logo`} />
           </StyledLink>
         </ListItem>
       ))}
