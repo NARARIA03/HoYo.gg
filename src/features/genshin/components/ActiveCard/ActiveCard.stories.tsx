@@ -1,9 +1,9 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { useEffect, useRef, useState, type ComponentProps } from 'react';
 import { ActiveCard } from './ActiveCard';
-import type { MinimizedGenshinCharacterDTO } from '../../types/genshinDbDto';
 import { CharacterCard } from '../CharacterCard/CharacterCard';
 import { AnimatePresence } from 'motion/react';
+import { fn } from '@storybook/test';
 
 const meta = {
   title: 'Components/Genshin/ActiveCard',
@@ -58,13 +58,13 @@ export const Example: StoryFn<ComponentProps<typeof ActiveCard>> = () => {
 };
 
 const MOCK_DATA = {
-  id: 10000109,
-  name: '유메미즈키 미즈키',
-  title: '아름답게 얽힌 꿈',
+  name: '야에 미코',
+  title: '속세를 비웃는 백 가지 자태',
   description:
-    '「아이사 대중탕」의 대주주 겸 바쿠 일족의 심리 치료사. 악몽을 몰아내고 사람들의 마음에 평화를 가져다 주기 위해 열심히 노력하고 있다',
-  rarity: 5,
-  elementText: '바람',
-  region: '이나즈마',
-  image: 'https://enka.network/ui/UI_AvatarIcon_Mizuki.png',
-} satisfies MinimizedGenshinCharacterDTO;
+    '나루카미 다이샤의 궁사 겸 「야에 출판사」 편집장. 아름다운 외모 아래 예상 밖의 지혜와 교활함이 숨겨져 있다',
+  rank: 's',
+  element: 'Electro',
+  region: 'ASSOC_TYPE_FATUI',
+  image: 'https://enka.network/ui/UI_AvatarIcon_Yae.png',
+  onClick: fn(),
+} satisfies ComponentProps<typeof CharacterCard>;
