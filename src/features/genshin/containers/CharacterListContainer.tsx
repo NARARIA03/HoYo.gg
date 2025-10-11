@@ -1,99 +1,106 @@
-import { useEffect, useRef, useState } from 'react';
-import { useGetGenshinCharacters } from '../hooks/queries/useGetGenshinCharacters';
-import type { MinimizedGenshinCharacterDTO } from '../types/genshinDbDto';
-import { useLockBodyScroll } from '@/hooks/useLockBodyScroll';
-import styled from '@emotion/styled';
-import { CharacterCard } from '../components/CharacterCard/CharacterCard';
-import { AnimatePresence } from 'motion/react';
-import { ActiveCard } from '../components/ActiveCard/ActiveCard';
+// import { useEffect, useRef, useState } from 'react';
+// import { useGetGenshinCharacters } from '../hooks/queries/useGetGenshinCharacters';
+// import type { MinimizedGenshinCharacterDTO } from '../types/genshinDbDto';
+// import { useLockBodyScroll } from '@/hooks/useLockBodyScroll';
+// import styled from '@emotion/styled';
+// import { CharacterCard } from '../components/CharacterCard/CharacterCard';
+// import { AnimatePresence } from 'motion/react';
+// import { ActiveCard } from '../components/ActiveCard/ActiveCard';
 
-type TActiveCard = {
-  id: number;
-  rect: DOMRect;
-  character: MinimizedGenshinCharacterDTO;
-};
+// type TActiveCard = {
+//   id: number;
+//   rect: DOMRect;
+//   character: MinimizedGenshinCharacterDTO;
+// };
 
-type TCardRefs = Record<number, HTMLElement | null>;
+// type TCardRefs = Record<string, HTMLElement | null>;
 
-const ANIMATION_DURATION = 600;
+// const ANIMATION_DURATION = 600;
 
-export const CharacterListContainer = () => {
-  const [activeCard, setActiveCard] = useState<TActiveCard | null>(null);
-  const [isLockScroll, setIsLockScroll] = useState<boolean>(false);
-  const cardRefs = useRef<TCardRefs>({});
-  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
+// export const CharacterListContainer = () => {
+//   const [activeCard, setActiveCard] = useState<TActiveCard | null>(null);
+//   const [isLockScroll, setIsLockScroll] = useState<boolean>(false);
+//   const cardRefs = useRef<TCardRefs>({});
+//   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
-  const { data: characters } = useGetGenshinCharacters();
+//   const { data: characters } = useGetGenshinCharacters();
 
-  const handleCardClick = (id: number, character: MinimizedGenshinCharacterDTO) => {
-    const ref = cardRefs.current[id];
-    if (ref) {
-      setIsLockScroll(true);
-      const rect = ref.getBoundingClientRect();
-      ref.style.opacity = '0';
-      setActiveCard({ id, rect, character });
-    }
-  };
+//   const handleCardClick = (id: string, character: MinimizedGenshinCharacterDTO) => {
+//     const ref = cardRefs.current[id];
+//     if (ref) {
+//       setIsLockScroll(true);
+//       const rect = ref.getBoundingClientRect();
+//       ref.style.opacity = '0';
+//       setActiveCard({ id, rect, character });
+//     }
+//   };
 
-  const handleCardClose = (id: number) => {
-    setActiveCard(null);
-    timer.current = setTimeout(() => {
-      setIsLockScroll(false);
-      if (cardRefs.current[id]) {
-        cardRefs.current[id].style.opacity = '1';
-      }
-    }, ANIMATION_DURATION);
-  };
+//   const handleCardClose = (id: string) => {
+//     setActiveCard(null);
+//     timer.current = setTimeout(() => {
+//       setIsLockScroll(false);
+//       if (cardRefs.current[id]) {
+//         cardRefs.current[id].style.opacity = '1';
+//       }
+//     }, ANIMATION_DURATION);
+//   };
 
-  useLockBodyScroll({ isLock: isLockScroll });
+//   useLockBodyScroll({ isLock: isLockScroll });
 
-  useEffect(() => {
-    return () => clearTimeout(timer.current);
-  }, []);
+//   useEffect(() => {
+//     return () => clearTimeout(timer.current);
+//   }, []);
 
-  return (
-    <Wrapper>
-      <Grid>
-        {characters?.map((character) => (
-          <CharacterCard
-            key={character.id}
-            ref={(el) => {
-              cardRefs.current[character.id] = el;
-            }}
-            name={character.name}
-            title={character.title}
-            description={character.description}
-            rarity={character.rarity}
-            elementText={character.elementText}
-            region={character.region}
-            image={character.image}
-            onClick={() => handleCardClick(character.id, character)}
-          />
-        ))}
-        <AnimatePresence>
-          {activeCard && (
-            <ActiveCard
-              rect={activeCard.rect}
-              onClose={() => handleCardClose(activeCard.id)}
-              duration={ANIMATION_DURATION}
-            >
-              <CharacterCard {...activeCard.character} onClick={() => {}} />
-            </ActiveCard>
-          )}
-        </AnimatePresence>
-      </Grid>
-    </Wrapper>
-  );
-};
+//   if (!characters) return null;
 
-const Wrapper = styled.section`
-  background-color: rgb(30, 30, 47);
-`;
+//   return (
+//     <Wrapper>
+//       <Grid>
+//         {Object.entries(characters).map(([id, character]) => (
+//           <CharacterCard
+//             key={id}
+//             ref={(el) => {
+//               cardRefs.current[id] = el;
+//             }}
+//             name={character.KR}
+//             title="임시제목"
+//             description="임시설명"
+//             rarity={5}
+//             elementText={'물'}
+//             region={'노드크라이'}
+//             image={''}
+//             onClick={() => {}}
+//           />
+//         ))}
+//         <AnimatePresence>
+//           {activeCard && (
+//             <ActiveCard
+//               rect={activeCard.rect}
+//               onClose={() => handleCardClose(activeCard.id)}
+//               duration={ANIMATION_DURATION}
+//             >
+//               <CharacterCard {...activeCard.character} onClick={() => {}} />
+//             </ActiveCard>
+//           )}
+//         </AnimatePresence>
+//       </Grid>
+//     </Wrapper>
+//   );
+// };
 
-const Grid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  padding: 20px;
-`;
+// const Wrapper = styled.section`
+//   background-color: rgb(30, 30, 47);
+// `;
+
+// const Grid = styled.div`
+//   display: flex;
+//   flex-wrap: wrap;
+//   gap: 20px;
+//   justify-content: center;
+//   padding: 20px;
+// `;
+
+// Todo: 추후 작업 예정
+export default function CharacterListContainer() {
+  return <></>;
+}
