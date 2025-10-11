@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import type { LayoutProps } from '../types';
-import { getPrimaryColor, MAX_WIDTH } from '@/styles/theme';
+import { getPrimaryColor } from '@/styles/theme';
+import { HEADER_HEIGHT, MAX_WIDTH, TOP_Z_INDEX } from '@/styles/layout';
 import type { TGame } from '@/types/common';
 import GameListNavBar from '../components/GameListNavBar';
 import HeaderBackgroundImage from '../components/HeaderBackgroundImage';
@@ -28,13 +29,13 @@ const HeaderWrapper = styled.header`
   position: sticky;
   top: 0;
   width: 100%;
-  height: 120px;
+  height: ${HEADER_HEIGHT};
   display: flex;
   padding: 0 10px;
   overflow: hidden;
   background-color: rgba(30, 30, 47, 0.8);
   backdrop-filter: blur(8px);
-  z-index: 100;
+  z-index: ${TOP_Z_INDEX};
 `;
 
 const Wrapper = styled.div`

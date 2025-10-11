@@ -19,6 +19,13 @@ const genshin = {
     Electro: '/images/genshin/elements/Electro.webp',
     Anemo: '/images/genshin/elements/Anemo.webp',
   },
+  weapon: {
+    WEAPON_BOW: '/images/genshin/weapons/WEAPON_BOW.webp',
+    WEAPON_SWORD_ONE_HAND: '/images/genshin/weapons/WEAPON_SWORD_ONE_HAND.webp',
+    WEAPON_CLAYMORE: '/images/genshin/weapons/WEAPON_CLAYMORE.webp',
+    WEAPON_POLE: '/images/genshin/weapons/WEAPON_POLE.webp',
+    WEAPON_CATALYST: '/images/genshin/weapons/WEAPON_CATALYST.webp',
+  },
 } as const;
 
 export const IMAGES = {
