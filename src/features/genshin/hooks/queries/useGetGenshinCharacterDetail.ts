@@ -19,9 +19,15 @@ export const useGetGenshinCharacterDetail = (characterId: string) => {
   });
 };
 
-export const prefetchGenshinCharacterDetail = (queryClient: QueryClient, characterId: string) => {
-  return queryClient.prefetchQuery({
-    queryFn: () => getGenshinCharacterDetail(characterId),
-    queryKey: [GENSHIN_CHARACTER_QUERY_KEY, characterId],
-  });
+export const fetchGenshinCharacterDetail = async (queryClient: QueryClient, characterId: string) => {
+  try {
+    const data = await queryClient.fetchQuery({
+      queryFn: () => getGenshinCharacterDetail(characterId),
+      queryKey: [GENSHIN_CHARACTER_QUERY_KEY, characterId],
+    });
+    return data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 };
