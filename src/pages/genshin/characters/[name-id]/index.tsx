@@ -2,6 +2,7 @@ import GenshinCharacterDetailContainer from '@/features/genshin/containers/Gensh
 import { fetchGenshinCharacterDetail } from '@/features/genshin/hooks/queries/useGetGenshinCharacterDetail';
 import { serverGenshinNameAndId } from '@/features/genshin/hooks/useGenshinNameAndId';
 import { getGenshinDetailHref } from '@/features/genshin/utils/getGenshinHref';
+import { createSlugText } from '@/utils/slug';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
@@ -39,7 +40,7 @@ export const getServerSideProps = (async (context) => {
     };
   }
 
-  if (data.Name !== name) {
+  if (createSlugText(data.Name) !== name) {
     return {
       redirect: {
         destination: getGenshinDetailHref(data.Name, id),
