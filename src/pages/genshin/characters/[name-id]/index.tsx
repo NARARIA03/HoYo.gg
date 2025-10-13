@@ -2,17 +2,24 @@ import GenshinCharacterDetailContainer from '@/features/genshin/containers/Gensh
 import { fetchGenshinCharacterDetail } from '@/features/genshin/hooks/queries/useGetGenshinCharacterDetail';
 import { serverGenshinNameAndId } from '@/features/genshin/hooks/useGenshinNameAndId';
 import { getGenshinDetailHref } from '@/features/genshin/utils/getGenshinHref';
+import { SeoContainer } from '@/modules/seo';
 import { createSlugText } from '@/utils/slug';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
 
-export default function GenshinCharacterDetailPage({ dehydratedState }: Props) {
+export default function GenshinCharacterDetailPage({ name, dehydratedState }: Props) {
+  const title = `${name} 정보 | Genshin.gg`;
+  const description = `${name}의 다양한 인게임 정보들을 확인해보세요.`;
+
   return (
-    <HydrationBoundary state={dehydratedState}>
-      <GenshinCharacterDetailContainer />
-    </HydrationBoundary>
+    <>
+      <SeoContainer title={title} description={description} />
+      <HydrationBoundary state={dehydratedState}>
+        <GenshinCharacterDetailContainer />
+      </HydrationBoundary>
+    </>
   );
 }
 
@@ -51,6 +58,7 @@ export const getServerSideProps = (async (context) => {
 
   return {
     props: {
+      name: name.replaceAll('-', ' '),
       dehydratedState: dehydrate(queryClient),
     },
   };
