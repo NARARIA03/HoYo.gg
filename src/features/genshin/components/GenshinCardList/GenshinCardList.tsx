@@ -5,6 +5,7 @@ import { MAX_WIDTH } from '@/styles/layout';
 import { getObjectEntries } from '@/utils';
 import { useGenshinQueryParams } from '../../hooks/useGenshinQueryParams';
 import { getGenshinAvatarUrl, getGenshinRank } from '../../utils';
+import { getGenshinDetailHref } from '../../utils/getGenshinHref';
 import type { GICharactersDTO } from '../../types/chatactersDto';
 
 type Props = {
@@ -39,7 +40,7 @@ export const GenshinCardList = ({ characters }: Props) => {
               src: IMAGES.genshin.element[character.element],
               alt: character.element,
             }}
-            href=""
+            href={getGenshinDetailHref(character.KR, id)}
           />
         </li>
       ))}
