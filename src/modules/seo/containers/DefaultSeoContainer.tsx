@@ -5,7 +5,7 @@ import { BASE_URL } from '@/constants/env';
 export const DefaultSeoContainer = () => {
   const router = useRouter();
 
-  const canonical = `${BASE_URL}${router.pathname}`;
+  const canonical = `${BASE_URL}${router.asPath.split('?')[0]}`;
 
   const openGraph = {
     type: 'website',
