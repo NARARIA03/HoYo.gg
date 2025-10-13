@@ -3,7 +3,9 @@ import axios from 'axios';
 import type { GICharacterDetailDTO } from '../../types/characterDetailDto';
 import { useQuery, type QueryClient } from '@tanstack/react-query';
 
-const getGenshinCharacterDetail = async (characterId: string) => {
+const getGenshinCharacterDetail = async (characterId?: string) => {
+  if (!characterId) return Promise.reject(new Error('characterId가 undefined입니다.'));
+
   const endpoint = queryEndpoint.genshin.characters.detail(characterId);
   const res = await axios.get<GICharacterDetailDTO>(endpoint);
   return res.data;
@@ -11,7 +13,7 @@ const getGenshinCharacterDetail = async (characterId: string) => {
 
 export const GENSHIN_CHARACTER_QUERY_KEY = 'GENSHIN_CHARACTER_QUERY_KEY';
 
-export const useGetGenshinCharacterDetail = (characterId: string) => {
+export const useGetGenshinCharacterDetail = (characterId?: string) => {
   return useQuery({
     queryFn: () => getGenshinCharacterDetail(characterId),
     queryKey: [GENSHIN_CHARACTER_QUERY_KEY, characterId],
