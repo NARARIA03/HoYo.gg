@@ -1,9 +1,9 @@
-import type { GIElementDTO, GIRankDTO, GIWeaponDTO } from './baseDto';
+import type { GIElementDTO, GIRarityDTO, GIWeaponDTO } from './baseDto';
 
 export type GICharacterDTO = {
   birth: [number, number]; // n월 n일
   icon: string; //아이콘 이름
-  rank: GIRankDTO;
+  rank: GIRarityDTO;
   weapon: GIWeaponDTO;
   release: string; // 출시일
   element: GIElementDTO; // 원소

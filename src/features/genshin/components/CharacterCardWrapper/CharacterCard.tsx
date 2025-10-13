@@ -3,9 +3,12 @@ import Image from 'next/image';
 import { forwardRef, useRef } from 'react';
 import { IMAGES } from '@/constants/images';
 import { Glare, Hologram } from '@/components';
-import { useTiltEffect } from '../../hooks/useTiltEffect';
-import type { ElementTextDTO, Region } from '../../types/genshinDbDto';
+import type { TRank } from '@/types/common';
+import { getRankBgColor } from '@/styles/theme';
 import { mergeRefs } from '@/utils';
+import { useTiltEffect } from '../../hooks/useTiltEffect';
+import type { GIElementDTO, GIRegionDTO } from '../../types/baseDto';
+import { elementTextMap, regionTextMap } from '../../constants';
 
 export type Props = {
   /** 이름 */
@@ -15,11 +18,11 @@ export type Props = {
   /** 캐릭터 소개글 */
   description: string;
   /** 등급 */
-  rarity: 4 | 5;
+  rank: TRank;
   /** 사용 원소 */
-  elementText: ElementTextDTO;
+  element: GIElementDTO;
   /** 지역 */
-  region: Region;
+  region: GIRegionDTO;
   /** 이미지 url */
   image: string;
   /** 클릭 콜백 */
@@ -30,7 +33,7 @@ export type Props = {
  * 캐릭터별 카드를 렌더링하는 컴포넌트입니다.
  */
 export const CharacterCard = forwardRef<HTMLElement, Props>(
-  ({ name, title, description, rarity, elementText, region, image, onClick }, forwardedRef) => {
+  ({ name, title, description, rank, element, region, image, onClick }, forwardedRef) => {
     const wrapperRef = useRef(null);
     const cardRef = useRef(null);
 
@@ -41,22 +44,29 @@ export const CharacterCard = forwardRef<HTMLElement, Props>(
         <Wrapper ref={cardRef} onClick={onClick}>
           <Hologram parentRef={wrapperRef} css={{ zIndex: 3 }} />
           <Glare parentRef={wrapperRef} css={{ zIndex: 3 }} />
-          <RarityImage src={'#'} alt={`${rarity}등급 배경`} width={250} height={320} />
-          <AvatarImage src={image} alt={name} width={240} height={240} />
-          <ImageIcon
-            src={IMAGES.genshin.emblem[region]}
-            alt={region}
-            width={35}
-            height={35}
-            css={{ top: 10, right: 10 }}
-          />
-          <ImageIcon src={'#'} alt={`${elementText} 원소`} width={35} height={35} css={{ top: 50, right: 10 }} />
-          <TextsBox>
-            <NameTxt>
-              {title} · {name}
-            </NameTxt>
-            <DescriptionTxt>{description}</DescriptionTxt>
-          </TextsBox>
+          <RankWrapper $rank={rank}>
+            <AvatarImage src={image} alt={name} width={240} height={240} />
+            <ImageIcon
+              src={IMAGES.genshin.emblem[region]}
+              alt={regionTextMap[region]}
+              width={35}
+              height={35}
+              css={{ top: 10, right: 10 }}
+            />
+            <ImageIcon
+              src={IMAGES.genshin.element[element]}
+              alt={elementTextMap[element]}
+              width={35}
+              height={35}
+              css={{ top: 50, right: 10 }}
+            />
+            <TextsBox>
+              <NameTxt>
+                {title} · {name}
+              </NameTxt>
+              <DescriptionTxt>{description}</DescriptionTxt>
+            </TextsBox>
+          </RankWrapper>
         </Wrapper>
       </TiltBox>
     );
@@ -109,12 +119,13 @@ const TextsBox = styled.div`
   color: rgba(255, 255, 255, 0.8);
 `;
 
-const RarityImage = styled(Image)`
+const RankWrapper = styled.div<{ $rank: TRank }>`
+  width: 250px;
+  height: 320px;
   position: absolute;
   inset: 0;
   border-radius: 10px;
-  object-fit: cover;
-  pointer-events: none;
+  background: ${({ $rank }) => getRankBgColor($rank)};
 `;
 
 const AvatarImage = styled(Image)`
