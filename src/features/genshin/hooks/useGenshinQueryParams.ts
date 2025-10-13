@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router';
-import type { GIElementDTO, GIRankDTO, GIWeaponDTO } from '../types/baseDto';
+import type { GIElementDTO, GIRarityDTO, GIWeaponDTO } from '../types/baseDto';
 import { getObjectEntries, parseArrayQuery, parseQuery } from '@/utils';
 
 type Params = {
   element: GIElementDTO[];
   weapon: GIWeaponDTO[];
-  rank: GIRankDTO[];
+  rank: GIRarityDTO[];
   keyword?: string;
 };
 
@@ -15,7 +15,7 @@ export const useGenshinQueryParams = () => {
   const queryParams = {
     element: parseArrayQuery<GIElementDTO>(router.query.element) ?? [],
     weapon: parseArrayQuery<GIWeaponDTO>(router.query.weapon) ?? [],
-    rank: parseArrayQuery<GIRankDTO>(router.query.rank) ?? [],
+    rank: parseArrayQuery<GIRarityDTO>(router.query.rank) ?? [],
     keyword: parseQuery<string>(router.query.keyword),
   } satisfies Params;
 

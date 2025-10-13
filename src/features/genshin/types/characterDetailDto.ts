@@ -1,4 +1,4 @@
-import type { GIElementDTO, GIRegionDTO, GIWeaponDTO } from './baseDto';
+import type { GIElementDTO, GIRarityDTO, GIRegionDTO, GIWeaponDTO } from './baseDto';
 
 type GIRankDTO = 3 | 4 | 5;
 
@@ -121,7 +121,7 @@ export type GICharacterDetailDTO = {
   Desc: string; // 캐릭터 설명
   CharaInfo: GICharacterInfoDTO;
   Weapon: GIWeaponDTO; // 무기 key
-  Rarity: GIRankDTO; // 4성, 5성, 특수 5성
+  Rarity: GIRarityDTO; // 4성, 5성, 특수 5성
   Element: GIElementDTO; // 원소 key
   Icon: string; // 아바타 아이콘
   Skills: GISkillDTO[]; // 전투 특성 정보

@@ -1,8 +1,8 @@
 import type { TRank } from '@/types/common';
-import type { GIRankDTO } from '../types/baseDto';
+import type { GIRarityDTO } from '../types/baseDto';
 
-export const getGenshinRank = (rank: GIRankDTO) => {
-  const converter: Record<GIRankDTO, TRank> = {
+export const getGenshinRank = (rank: GIRarityDTO) => {
+  const converter: Record<GIRarityDTO, TRank> = {
     QUALITY_ORANGE_SP: 'sp',
     QUALITY_ORANGE: 's',
     QUALITY_PURPLE: 'a',
