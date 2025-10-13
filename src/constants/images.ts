@@ -1,27 +1,31 @@
 const genshin = {
   emblem: {
-    몬드: '/images/genshin/emblem/Mondstadt.webp',
-    리월: '/images/genshin/emblem/Liyue.webp',
-    이나즈마: '/images/genshin/emblem/Inazuma.webp',
-    수메르: '/images/genshin/emblem/Sumeru.webp',
-    폰타인: '/images/genshin/emblem/Fontaine.webp',
-    나타: '/images/genshin/emblem/Natlan.webp',
-    스네즈나야: '/images/genshin/emblem/Snezhnaya.webp', // Todo: 실제 스네즈나야 아이콘 나오면 변경
-    노드크라이: '/images/genshin/emblem/Nodkrai.webp',
-    없음: '/images/genshin/emblem/Snezhnaya.webp',
-  },
-  rarity: {
-    4: '/images/genshin/rarity/4Star.webp',
-    5: '/images/genshin/rarity/5Star.webp',
+    ASSOC_TYPE_MONDSTADT: '/images/genshin/emblem/Mondstadt.webp',
+    ASSOC_TYPE_LIYUE: '/images/genshin/emblem/Liyue.webp',
+    ASSOC_TYPE_INAZUMA: '/images/genshin/emblem/Inazuma.webp',
+    ASSOC_TYPE_SUMERU: '/images/genshin/emblem/Sumeru.webp',
+    ASSOC_TYPE_FONTAINE: '/images/genshin/emblem/Fontaine.webp',
+    ASSOC_TYPE_NATLAN: '/images/genshin/emblem/Natlan.webp',
+    ASSOC_TYPE_NODKRAI: '/images/genshin/emblem/Nodkrai.webp',
+    ASSOC_TYPE_MAINACTOR: '/images/genshin/emblem/Unknown.webp', // Todo: 물음표로 유지
+    ASSOC_TYPE_FATUI: '/images/genshin/emblem/Fatui.webp',
+    ASSOC_TYPE_OMNI_SCOURGE: '/images/genshin/emblem/Unknown.webp', // Todo: 물음표로 유지 (스커크 전용)
   },
   element: {
-    바위: '/images/genshin/elements/Geo.webp',
-    풀: '/images/genshin/elements/Dendro.webp',
-    얼음: '/images/genshin/elements/Cryo.webp',
-    불: '/images/genshin/elements/Pyro.webp',
-    물: '/images/genshin/elements/Hydro.webp',
-    번개: '/images/genshin/elements/Electro.webp',
-    바람: '/images/genshin/elements/Anemo.webp',
+    Geo: '/images/genshin/elements/Geo.webp',
+    Dendro: '/images/genshin/elements/Dendro.webp',
+    Cryo: '/images/genshin/elements/Cryo.webp',
+    Pyro: '/images/genshin/elements/Pyro.webp',
+    Hydro: '/images/genshin/elements/Hydro.webp',
+    Electro: '/images/genshin/elements/Electro.webp',
+    Anemo: '/images/genshin/elements/Anemo.webp',
+  },
+  weapon: {
+    WEAPON_BOW: '/images/genshin/weapons/WEAPON_BOW.webp',
+    WEAPON_SWORD_ONE_HAND: '/images/genshin/weapons/WEAPON_SWORD_ONE_HAND.webp',
+    WEAPON_CLAYMORE: '/images/genshin/weapons/WEAPON_CLAYMORE.webp',
+    WEAPON_POLE: '/images/genshin/weapons/WEAPON_POLE.webp',
+    WEAPON_CATALYST: '/images/genshin/weapons/WEAPON_CATALYST.webp',
   },
 } as const;
 

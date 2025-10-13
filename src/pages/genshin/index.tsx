@@ -1,32 +1,13 @@
-import { CharacterListContainer } from '@/features/genshin/containers/CharacterListContainer';
-import { prefetchGenshinCharacters } from '@/features/genshin/hooks/queries/useGetGenshinCharacters';
+import GenshinHomeContainer from '@/features/genshin/containers/GenshinHomeContainer';
 import { SeoContainer } from '@/modules/seo';
-import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
-import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
-type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
-
-const GenshinHomePage = ({ dehydratedState }: Props) => {
+const GenshinHomePage = () => {
   return (
     <>
       <SeoContainer />
-      <HydrationBoundary state={dehydratedState}>
-        <CharacterListContainer />
-      </HydrationBoundary>
+      <GenshinHomeContainer />
     </>
   );
 };
 
 export default GenshinHomePage;
-
-export const getServerSideProps = (async () => {
-  const queryClient = new QueryClient();
-
-  await prefetchGenshinCharacters(queryClient);
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-}) satisfies GetServerSideProps;

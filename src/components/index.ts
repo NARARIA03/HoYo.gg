@@ -1,4 +1,4 @@
 export { Hologram } from './Hologram/Hologram';
 export { Glare } from './Glare/Glare';
-export { Header } from './Header/Header';
-export { Footer } from './Footer/Footer';
+export { Card } from './Card/Card';
+export { SearchInputForm } from './SearchInput/SearchInputForm';

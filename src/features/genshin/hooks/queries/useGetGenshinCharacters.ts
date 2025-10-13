@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { type QueryClient, useQuery } from '@tanstack/react-query';
-import type { MinimizedGenshinCharacterDTO } from '../../types/genshinDbDto';
 import { queryEndpoint } from '@/constants/endpoints';
+import type { GICharactersDTO } from '../../types/chatactersDto';
 
 const getGenshinCharacters = async () => {
-  const endpoint = queryEndpoint.genshin.character.list;
-  const res = await axios.get<MinimizedGenshinCharacterDTO[]>(endpoint);
+  const endpoint = queryEndpoint.genshin.characters.list;
+  const res = await axios.get<GICharactersDTO>(endpoint);
   return res.data;
 };
 

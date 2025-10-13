@@ -1,0 +1,95 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { GenshinCardList } from './GenshinCardList';
+
+const meta = {
+  title: 'Components/Genshin/GenshinCardList',
+  component: GenshinCardList,
+  tags: ['autodocs'],
+} satisfies Meta<typeof GenshinCardList>;
+
+export default meta;
+
+export const Example = {
+  args: {
+    characters: {
+      '10000037': {
+        birth: [12, 2],
+        icon: 'UI_AvatarIcon_Ganyu',
+        rank: 'QUALITY_ORANGE',
+        weapon: 'WEAPON_BOW',
+        release: '2021-01-12 18:00:00',
+        element: 'Cryo',
+        EN: 'Ganyu',
+        desc: 'The secretary at Yuehai Pavilion. The blood of the qilin, an illuminated beast, flows within her veins.',
+        KR: '감우',
+        CHS: '甘雨',
+        JP: '甘雨',
+      },
+      '10000025': {
+        birth: [10, 9],
+        icon: 'UI_AvatarIcon_Xingqiu',
+        rank: 'QUALITY_PURPLE',
+        weapon: 'WEAPON_SWORD_ONE_HAND',
+        release: '2020-09-15 04:00:00',
+        element: 'Hydro',
+        EN: 'Xingqiu',
+        desc: 'A young man carrying a longsword who is frequently seen at book booths. He has a chivalrous heart and yearns for justice and fairness for all.',
+        KR: '행추',
+        CHS: '行秋',
+        JP: '行秋',
+      },
+      '10000007-2': {
+        birth: [1, 1],
+        icon: 'UI_AvatarIcon_PlayerGirl',
+        rank: 'QUALITY_ORANGE',
+        weapon: 'WEAPON_SWORD_ONE_HAND',
+        release: '1970-01-01 00:00:00',
+        element: 'Pyro',
+        EN: 'Traveler',
+        desc: 'A traveler from another world who had their only kin taken away, forcing them to embark on a journey to find The Seven.',
+        KR: '여행자',
+        CHS: '旅行者',
+        JP: '旅人',
+      },
+      '10000091': {
+        birth: [8, 16],
+        icon: 'UI_AvatarIcon_Navia',
+        rank: 'QUALITY_ORANGE',
+        weapon: 'WEAPON_CLAYMORE',
+        release: '2023-12-19 00:00:00',
+        element: 'Geo',
+        EN: 'Navia',
+        desc: 'The current President of Spina di Rosula, who is lovely, dutiful, and a great boss.',
+        KR: '나비아',
+        CHS: '娜维娅',
+        JP: 'ナヴィア',
+      },
+      '10000007-7': {
+        birth: [1, 1],
+        icon: 'UI_AvatarIcon_PlayerGirl',
+        rank: 'QUALITY_ORANGE',
+        weapon: 'WEAPON_SWORD_ONE_HAND',
+        release: '1970-01-01 00:00:00',
+        element: 'Electro',
+        EN: 'Traveler',
+        desc: 'A traveler from another world who had their only kin taken away, forcing them to embark on a journey to find The Seven.',
+        KR: '여행자',
+        CHS: '旅行者',
+        JP: '旅人',
+      },
+      '10000092': {
+        birth: [12, 22],
+        icon: 'UI_AvatarIcon_Gaming',
+        rank: 'QUALITY_PURPLE',
+        weapon: 'WEAPON_CLAYMORE',
+        release: '2024-01-30 00:00:00',
+        element: 'Pyro',
+        EN: 'Gaming',
+        desc: 'Guard of the Sword and Strongbox Secure Transport Agency, and the head of the "Mighty Mythical Beasts" Wushou troupe.',
+        KR: '가명',
+        CHS: '嘉明',
+        JP: '嘉明',
+      },
+    },
+  },
+} satisfies StoryObj<typeof GenshinCardList>;

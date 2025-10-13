@@ -1,8 +1,7 @@
 const genshin = {
-  character: {
-    list: 'https://genshin-db-api.vercel.app/api/v5/characters?query=names&matchCategories=true&verboseCategories=true&resultLanguage=korean',
-    detail: (name: string) =>
-      `https://genshin-db-api.vercel.app/api/v5/characters?query=${encodeURIComponent(name)}&queryLanguages=korean&resultLanguage=korean`,
+  characters: {
+    list: 'https://api.hakush.in/gi/data/character.json',
+    detail: (characterId: string) => `https://api.hakush.in/gi/data/ko/character/${characterId}.json`,
   },
 } as const;
 
