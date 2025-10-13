@@ -4,7 +4,7 @@ import { SeoContainer } from '@/modules/seo';
 const GenshinHomePage = () => {
   return (
     <>
-      <SeoContainer />
+      <SeoContainer name="giMain" />
       <GenshinHomeContainer />
     </>
   );

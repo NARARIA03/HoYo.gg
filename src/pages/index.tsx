@@ -4,7 +4,7 @@ import { SeoContainer } from '@/modules/seo';
 const HomePage = () => {
   return (
     <>
-      <SeoContainer />
+      <SeoContainer name="root" />
       <LandingScreen />
     </>
   );

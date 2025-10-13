@@ -9,7 +9,7 @@ type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
 export default function GenshinCharactersPage({ dehydratedState }: Props) {
   return (
     <>
-      <SeoContainer />
+      <SeoContainer name="giCharacters" />
       <HydrationBoundary state={dehydratedState}>
         <GenshinCharactersContainer />
       </HydrationBoundary>
