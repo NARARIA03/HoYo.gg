@@ -17,13 +17,6 @@ const typescriptTypeImportRule = {
   },
 };
 
-const noConsoleRule = {
-  files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-  rules: {
-    'no-console': ['error', { allow: ['error'] }],
-  },
-};
-
 const noUnusedVarsRule = {
   files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
   rules: {
@@ -48,7 +41,7 @@ const noUnknownPropertyRule = {
 const eslintConfig = [
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
   typescriptTypeImportRule,
-  noConsoleRule,
+
   noUnusedVarsRule,
   noUnknownPropertyRule,
   eslintConfigPrettier,
