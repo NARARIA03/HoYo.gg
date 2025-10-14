@@ -1,6 +1,6 @@
 import { getGenshinCharacters } from '@/features/genshin/apis/getGenshinCharacters';
 import type { GICharactersDTO } from '@/features/genshin/types/chatactersDto';
-import { API_CACHE_KEY, getApiCache, setApiCache } from '@/modules/apiCache';
+import { API_CACHE_KEY, getApiCache, setApiCache } from '@/modules/cache';
 import { isAxiosError } from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
