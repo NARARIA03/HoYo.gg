@@ -4,3 +4,4 @@ const getEnv = (value?: string) => {
 };
 
 export const BASE_URL = getEnv(process.env.NEXT_PUBLIC_BASE_URL);
+export const IS_SERVER = typeof window === 'undefined';
