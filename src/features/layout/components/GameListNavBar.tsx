@@ -2,7 +2,7 @@ import type { TGame } from '@/types/common';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
-import { GAME_ICON } from '../constants';
+import { GAME_ICON, GAME_LIST, GAME_URL } from '../constants';
 
 type Props = {
   game: TGame;
@@ -10,19 +10,19 @@ type Props = {
 
 export default function GameListNavBar({ game }: Props) {
   const mainLogo = GAME_ICON[game];
-  const otherLogos = Object.entries(GAME_ICON).filter(([key]) => key !== game);
+  const otherLogos = GAME_LIST.filter((e) => e !== game);
 
   return (
     <List>
       <ListItem>
-        <StyledLink href={game}>
+        <StyledLink href={GAME_URL[game]}>
           <ActiveImage src={mainLogo} width={55} height={55} alt={`${game} logo`} />
         </StyledLink>
       </ListItem>
-      {otherLogos.map(([game, src]) => (
+      {otherLogos.map((game) => (
         <ListItem key={game}>
-          <StyledLink href={game}>
-            <DisabledImage src={src} width={40} height={40} alt={`${game} logo`} />
+          <StyledLink href={GAME_URL[game]}>
+            <DisabledImage src={GAME_ICON[game]} width={40} height={40} alt={`${game} logo`} />
           </StyledLink>
         </ListItem>
       ))}

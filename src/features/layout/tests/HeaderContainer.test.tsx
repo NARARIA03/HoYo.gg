@@ -12,19 +12,19 @@ describe('헤더 컴포넌트 테스트 코드', () => {
   test('원신 링크가 존재하는지 확인', () => {
     render(<HeaderContainer game="genshin" />);
     const link = screen.getByRole('link', { name: 'genshin logo' });
-    expect(link).toHaveAttribute('href', 'genshin');
+    expect(link).toHaveAttribute('href', '/genshin');
   });
 
   test('스타레일 링크가 존재하는지 확인', () => {
     render(<HeaderContainer game="hsr" />);
     const link = screen.getByRole('link', { name: 'hsr logo' });
-    expect(link).toHaveAttribute('href', 'hsr');
+    expect(link).toHaveAttribute('href', '/hsr');
   });
 
   test('젠레스 링크가 존재하는지 확인', () => {
     render(<HeaderContainer game="zzz" />);
     const link = screen.getByRole('link', { name: 'zzz logo' });
-    expect(link).toHaveAttribute('href', 'zzz');
+    expect(link).toHaveAttribute('href', '/zzz');
   });
 
   test('현재 페이지 로고는 55x55이고, 나머지 로고는 40x40', () => {
