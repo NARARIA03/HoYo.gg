@@ -1,13 +1,14 @@
+import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import GenshinCharacterDetailContainer from '@/features/genshin/containers/GenshinCharacterDetailContainer';
 import { fetchGenshinCharacterDetail } from '@/features/genshin/hooks/queries/useGetGenshinCharacterDetail';
 import { serverGenshinNameAndId } from '@/features/genshin/hooks/useGenshinNameAndId';
 import { getGenshinDetailHref } from '@/features/genshin/utils/getGenshinHref';
 import { SeoContainer } from '@/modules/seo';
 import { createSlugText } from '@/utils/slug';
-import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
-import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { DAY } from '@/constants';
 
-type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export default function GenshinCharacterDetailPage({ name, dehydratedState }: Props) {
   const title = `${name} 정보 | Genshin.gg`;
@@ -23,7 +24,14 @@ export default function GenshinCharacterDetailPage({ name, dehydratedState }: Pr
   );
 }
 
-export const getServerSideProps = (async (context) => {
+export const getStaticPaths = (async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
+}) satisfies GetStaticPaths;
+
+export const getStaticProps = (async (context) => {
   const { name, id } = serverGenshinNameAndId(context);
   const queryClient = new QueryClient();
 
@@ -61,5 +69,6 @@ export const getServerSideProps = (async (context) => {
       name: name.replaceAll('-', ' '),
       dehydratedState: dehydrate(queryClient),
     },
+    revalidate: DAY * 7,
   };
-}) satisfies GetServerSideProps;
+}) satisfies GetStaticProps;
