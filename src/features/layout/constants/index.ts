@@ -1,3 +1,5 @@
+export const GAME_LIST = ['genshin', 'hsr', 'zzz'] as const;
+
 export const GAME_TITLE = {
   genshin: 'Genshin Impact',
   hsr: 'Honkai: Star Rail',
@@ -20,6 +22,12 @@ export const HEADER_BG_IMAGE = {
   genshin: '/images/header/Hutao.webp',
   hsr: '/images/header/Silverwolf.webp',
   zzz: '/images/header/Anby.webp',
+} as const;
+
+export const GAME_URL = {
+  genshin: '/genshin',
+  hsr: '/hsr',
+  zzz: '/zzz',
 } as const;
 
 export const NAV_ITEM = {

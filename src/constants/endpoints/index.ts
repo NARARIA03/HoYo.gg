@@ -1,2 +1,5 @@
-export * from './apiRoute';
-export * from './query';
+import { genshinEndpoints } from './genshin';
+
+export const ENDPOINTS = {
+  genshin: genshinEndpoints,
+} as const;

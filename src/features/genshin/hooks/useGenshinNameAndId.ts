@@ -1,4 +1,4 @@
-import type { GetServerSidePropsContext } from 'next';
+import type { GetStaticPropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { parseSlug } from '@/utils/slug';
 
@@ -8,7 +8,7 @@ export const useGenshinNameAndId = () => {
   return { name, id };
 };
 
-export const serverGenshinNameAndId = (context: GetServerSidePropsContext) => {
+export const serverGenshinNameAndId = (context: GetStaticPropsContext) => {
   const { name, id } = parseSlug(context.params?.['name-id']) ?? {};
   return { name, id };
 };

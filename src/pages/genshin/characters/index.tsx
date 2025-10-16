@@ -1,10 +1,11 @@
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
-import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import GenshinCharactersContainer from '@/features/genshin/containers/GenshinCharactersContainer';
 import { prefetchGenshinCharacters } from '@/features/genshin/hooks/queries/useGetGenshinCharacters';
 import { SeoContainer } from '@/modules/seo';
+import { DAY } from '@/constants';
 
-type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export default function GenshinCharactersPage({ dehydratedState }: Props) {
   return (
@@ -17,7 +18,7 @@ export default function GenshinCharactersPage({ dehydratedState }: Props) {
   );
 }
 
-export const getServerSideProps = (async () => {
+export const getStaticProps = (async () => {
   const queryClient = new QueryClient();
 
   await prefetchGenshinCharacters(queryClient);
@@ -26,5 +27,6 @@ export const getServerSideProps = (async () => {
     props: {
       dehydratedState: dehydrate(queryClient),
     },
+    revalidate: DAY * 7,
   };
-}) satisfies GetServerSideProps;
+}) satisfies GetStaticProps;
