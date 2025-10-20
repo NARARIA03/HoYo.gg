@@ -5,7 +5,7 @@ vi.mock('@/constants/env', () => ({
   BASE_URL: 'base',
 }));
 
-describe('getSitemapUrls 테스트', () => {
+describe('getSitemapUrls 테스트 코드', () => {
   test('config가 빈 객체인 경우 BASE_URL만 반환', async () => {
     const config = {};
     const urls = await getSitemapUrls(config);
