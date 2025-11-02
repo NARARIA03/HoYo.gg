@@ -7,14 +7,14 @@ type Props = HTMLAttributes<HTMLLIElement> & {
   value: string;
 };
 
-export const ArticleCardItem = ({ horizontal = false, label, value, ...props }: Props) => {
+export default function ArticleCardItem({ horizontal = false, label, value, ...props }: Props) {
   return (
     <StyledListItem $horizontal={horizontal} {...props}>
       <StyledLabel $horizontal={horizontal}>{label}</StyledLabel>
       <StyledValue>{value}</StyledValue>
     </StyledListItem>
   );
-};
+}
 
 const StyledListItem = styled.li<{ $horizontal: boolean }>`
   display: flex;

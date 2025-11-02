@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { MAX_WIDTH } from '@/styles/layout';
 import { mediaQuery } from '@/styles/theme';
-import { ArticleCard } from '@/components/ArticleCard/ArticleCard';
+import ArticleCard from '@/components/ArticleCard/ArticleCard';
 import { useGetGenshinCharacterDetail } from '../hooks/queries/useGetGenshinCharacterDetail';
 import { useGenshinNameAndId } from '../hooks/useGenshinNameAndId';
 import { getGenshinAvatarUrl, getGenshinRank } from '../utils';

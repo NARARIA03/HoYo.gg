@@ -6,14 +6,14 @@ type Props = HTMLAttributes<HTMLElement> & {
   title: string;
 };
 
-export const ArticleCardWrapper = ({ title, children, ...props }: Props) => {
+export default function ArticleCardWrapper({ title, children, ...props }: Props) {
   return (
     <StyledArticle {...props}>
       <Title>{title}</Title>
       {children}
     </StyledArticle>
   );
-};
+}
 
 const StyledArticle = styled.article`
   padding-block: 16px;

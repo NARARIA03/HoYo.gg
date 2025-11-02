@@ -6,13 +6,13 @@ type Props = HTMLAttributes<HTMLUListElement> & {
   columns?: number;
 };
 
-export const ArticleCardGrid = ({ columns = 2, children, ...props }: Props) => {
+export default function ArticleCardGrid({ columns = 2, children, ...props }: Props) {
   return (
     <StyledGrid $columns={columns} {...props}>
       {children}
     </StyledGrid>
   );
-};
+}
 
 const StyledGrid = styled.ul<{ $columns: number }>`
   display: grid;

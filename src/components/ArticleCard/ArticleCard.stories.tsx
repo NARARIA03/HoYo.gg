@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import { ArticleCard } from './ArticleCard';
+import ArticleCard from './ArticleCard';
 
 const meta = {
   title: 'Components/Common/ArticleCard',
